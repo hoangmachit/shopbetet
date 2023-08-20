@@ -1,0 +1,306 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:root {
+  --color-main: #ed1164;
+  --color-white: #fff;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  position: relative;
+}
+
+.header {
+  background: var(--color-main);
+}
+.header__top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+  padding: 6px 0;
+  color: var(--color-white);
+}
+.header__top--wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__top .info-header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.header__top .info-header svg {
+  margin-right: 5px;
+}
+.header__top--policy {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.header__top--policy li:last-child {
+  margin-left: 7px;
+}
+.header__top--policy a {
+  color: var(--color-white);
+  text-decoration: none;
+}
+.header__bottom {
+  padding: 10px 0;
+  font-size: 14px;
+}
+.header__bottom--wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__bottom--search {
+  width: 100%;
+  max-width: 400px;
+  margin-left: 25px;
+}
+.header__bottom--cart {
+  margin-left: 25px;
+}
+.header__bottom--account {
+  margin-left: 25px;
+}
+.header__bottom--flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon-logo-newsversion {
+  background-position: -105px -260px;
+  height: 41px;
+  width: 194px;
+}
+
+[class^=icon-logo-],
+[class*=icon-logo-] {
+  background-image: url(//cdn.tgdd.vn/mwgcart/bluekids/images/common/desktop/icon_common@2x.webp);
+  background-repeat: no-repeat;
+  display: inline-block;
+  line-height: 30px;
+  vertical-align: middle;
+  background-size: 350px 350px;
+}
+
+#form-seach {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-white);
+  border-radius: 25px;
+  width: 100%;
+  width: 100%;
+}
+#form-seach #btnSearch {
+  border: none;
+  padding: 0;
+  width: 60px;
+  height: 40px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#form-seach #search {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  line-height: 40px;
+  height: 40px;
+  width: 100%;
+  padding-left: 20px;
+}
+
+.flex__cart,
+.flex__user {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  color: var(--color-white);
+}
+.flex__cart--icon,
+.flex__user--icon {
+  margin-right: 8px;
+}
+.flex__cart--icon .svg,
+.flex__user--icon .svg {
+  position: relative;
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+.flex__cart--icon .svg svg,
+.flex__user--icon .svg svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.flex__cart--icon .svg svg path,
+.flex__user--icon .svg svg path {
+  fill: var(--color-white);
+}
+.flex__cart a,
+.flex__user a {
+  color: var(--color-white);
+  text-decoration: none;
+}/*# sourceMappingURL=app.css.map */
