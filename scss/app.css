@@ -454,40 +454,23 @@ body {
   border-radius: 10px !important;
   overflow: hidden;
 }
-.main__banner .owl__banner .owl-nav {
+.main__banner .owl__banner .owl-dots {
+  margin: 0px;
   position: absolute;
-  top: calc(50% - 30px);
+  left: 0;
+  bottom: 15px;
+  right: 0;
+  margin: 0 auto;
 }
-.main__banner .owl__banner .owl-nav button {
-  background: #f2f2f2 !important;
-  height: 50px;
-  position: absolute;
-  width: 50px;
-  opacity: 0.7;
-  border-radius: 100% !important;
+.main__banner .owl__banner .owl-dots .owl-dot span {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 0px 2px;
+  width: 24px;
+  height: 2px;
+  border-radius: unset;
 }
-.main__banner .owl__banner .owl-nav button span {
-  font-size: 0;
-}
-.main__banner .owl__banner .owl-nav button::after {
-  content: "";
-  border-top: 2px solid #ed1164;
-  border-left: 2px solid #ed1164;
-  height: 8px;
-  width: 8px;
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  transform: rotate(-45deg);
-}
-.main__banner .owl__banner .owl-nav button.owl-next {
-  right: -25px;
-  left: auto;
-}
-.main__banner .owl__banner .owl-nav button.owl-next ::after {
-  right: 20px;
-  top: 20px;
-  transform: rotate(135deg);
+.main__banner .owl__banner .owl-dots .owl-dot.active span {
+  background-color: rgb(255, 255, 255);
 }
 
 .category .category__item {
@@ -555,6 +538,11 @@ body {
 
 .main__heading {
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 .main__heading--title {
   font-weight: 600;
@@ -562,8 +550,21 @@ body {
   line-height: 150%;
   color: rgb(39, 39, 42);
   text-align: left;
-  padding-left: 16px;
-  padding-right: 16px;
+}
+.main__heading a {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  text-decoration: none;
+  font-size: 14px;
+  color: black;
+}
+.main__heading a span {
+  margin-left: 5px;
+}
+.main__heading a span svg {
+  position: relative;
+  top: 1px;
 }
 
 .product__grid {
@@ -669,15 +670,119 @@ body {
   margin-top: 1rem;
 }
 
+.footer__banner {
+  margin-bottom: 20px;
+}
 .footer__banner--wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.footer__banner--wrapper .left, .footer__banner--wrapper .right {
+.footer__banner--wrapper .left,
+.footer__banner--wrapper .right {
   width: 49%;
 }
-.footer__banner--wrapper .left a, .footer__banner--wrapper .left img, .footer__banner--wrapper .right a, .footer__banner--wrapper .right img {
+.footer__banner--wrapper .left a,
+.footer__banner--wrapper .left img,
+.footer__banner--wrapper .right a,
+.footer__banner--wrapper .right img {
   border-radius: 5px;
   display: block;
+}
+
+.footer__info {
+  padding: 40px 0;
+}
+.footer__info--wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.footer__info--wrapper .block {
+  width: 25%;
+}
+.footer__info--wrapper .footer__heading {
+  margin-bottom: 12px;
+}
+.footer__info--wrapper .footer__heading--title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: bold;
+  color: rgb(56, 56, 61);
+}
+.footer__info--wrapper .footer__list a {
+  display: block;
+  color: rgb(128, 128, 137);
+  font-size: 13px;
+  line-height: 16px;
+  text-decoration: none;
+}
+.footer__info--wrapper .footer__list a:hover {
+  text-decoration: underline;
+}
+.footer__info--wrapper .footer__list a:not(:last-child) {
+  margin-bottom: 8px;
+}
+.footer__info--wrapper .footer_banking {
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer__info--wrapper .footer_banking .banking-item {
+  margin-bottom: 0.25rem;
+  margin-right: 0.25rem;
+  background-color: #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.footer__info--wrapper .footer_banking .banking-item .svg {
+  display: block;
+  width: 50px;
+  height: 30px;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.125rem;
+}
+.footer__info--wrapper .footer_banking .banking-item .svg svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.footer__info--wrapper .footer_social li a {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 14px;
+  color: rgb(56, 56, 61);
+  text-decoration: none;
+}
+.footer__info--wrapper .footer_social li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.footer__info--wrapper .footer_social li .icon {
+  margin-right: 10px;
+}
+.footer__info--wrapper .footer_social li .icon .svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+.footer__info--wrapper .footer_social li .icon svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+}
+
+.footer__copyright {
+  text-align: center;
+  background: #fff;
+  text-align: center;
+  padding: 13px 0px;
+  font-size: 13px;
+  border-top: 1px solid rgba(128, 128, 137, 0.1);
 }/*# sourceMappingURL=app.css.map */

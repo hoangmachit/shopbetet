@@ -73,42 +73,26 @@
             }
         }
 
-        .owl-nav {
+        .owl-dots {
+            margin: 0px;
             position: absolute;
-            top: calc(50% - 30px);
+            left: 0;
+            bottom: 15px;
+            right: 0;
+            margin: 0 auto;
 
-            button {
-                background: #f2f2f2 !important;
-                height: 50px;
-                position: absolute;
-                width: 50px;
-                opacity: .7;
-                border-radius: 100% !important;
-
+            .owl-dot {
                 span {
-                    font-size: 0;
+                    background-color: rgba(255, 255, 255, 0.5);
+                    margin: 0px 2px;
+                    width: 24px;
+                    height: 2px;
+                    border-radius: unset;
                 }
 
-                &::after {
-                    content: '';
-                    border-top: 2px solid #ed1164;
-                    border-left: 2px solid #ed1164;
-                    height: 8px;
-                    width: 8px;
-                    position: absolute;
-                    left: 20px;
-                    top: 20px;
-                    transform: rotate(-45deg);
-                }
-
-                &.owl-next {
-                    right: -25px;
-                    left: auto;
-
-                    ::after {
-                        right: 20px;
-                        top: 20px;
-                        transform: rotate(135deg);
+                &.active {
+                    span {
+                        background-color: rgba(255, 255, 255, 1);
                     }
                 }
             }
@@ -196,6 +180,11 @@
 
 .main__heading {
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 16px;
 
     &--title {
         font-weight: 600;
@@ -203,8 +192,21 @@
         line-height: 150%;
         color: rgb(39, 39, 42);
         text-align: left;
-        padding-left: 16px;
-        padding-right: 16px;
+    }
+    a{
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        text-decoration: none;
+        font-size: 14px;
+        color: black;
+        span{
+            margin-left: 5px;
+            svg{
+                position: relative;
+                top: 1px;
+            }
+        }
     }
 }
 
