@@ -1,0 +1,66 @@
+.main__visual {
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.main__banner {
+    position: relative;
+    margin-top: -90px;
+
+    .owl__banner {
+        &--item {
+            border-radius: 10px !important;
+            overflow: hidden;
+
+            img,
+            a {
+                border-radius: 10px !important;
+                overflow: hidden;
+            }
+        }
+
+        .owl-nav {
+            position: absolute;
+            top: calc(50% - 30px);
+
+            button {
+                background: #f2f2f2 !important;
+                height: 50px;
+                position: absolute;
+                width: 50px;
+                opacity: .7;
+                border-radius: 100% !important;
+
+                span {
+                    font-size: 0;
+                }
+
+                &::after {
+                    content: '';
+                    border-top: 2px solid #ed1164;
+                    border-left: 2px solid #ed1164;
+                    height: 8px;
+                    width: 8px;
+                    position: absolute;
+                    left: 20px;
+                    top: 20px;
+                    transform: rotate(-45deg);
+                }
+
+                &.owl-next {
+                    right: -25px;
+                    left: auto;
+
+                    ::after {
+                        right: 20px;
+                        top: 20px;
+                        transform: rotate(135deg);
+                    }
+                }
+            }
+        }
+    }
+}

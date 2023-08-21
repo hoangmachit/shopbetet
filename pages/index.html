@@ -5,7 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
+    <link rel="stylesheet"
+        href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="../scss/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js"></script>
 </head>
 
 <body>
@@ -133,8 +140,147 @@
                 </div>
             </div>
         </div>
+        <div class="menu">
+            <div class="container">
+                <div class="menu__wrapper">
+                    <div class="menu__dropdown">
+                        <div class="menu__dropdown--bar">
+                            <div class="btn">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <span class="line"></span>
+                            </div>
+                            <div class="category">
+                                <h2>Danh mục</h2>
+                            </div>
+                        </div>
+                        <div class="menu__category">
+                            <ul>
+                                <li>
+                                    <a href="#">Sữa bột</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sữa pha sẵn</a>
+                                </li>
+                                <li>
+                                    <a href="#">Bĩm tả</a>
+                                </li>
+                                <li>
+                                    <a href="#">Bình sữa, núm tim</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tắm gội</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sức khỏe & vitamin</a>
+                                </li>
+                                <li>
+                                    <a href="#">Đồ sơ sinh</a>
+                                </li>
+                                <li>
+                                    <a href="#">Đồ chơi điều khiển</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="menu__line">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="#">Sữa bột</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sữa pha sẵn</a>
+                                </li>
+                                <li>
+                                    <a href="#">Bĩm tả</a>
+                                </li>
+                                <li>
+                                    <a href="#">Bình sữa, núm tim</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tắm gội</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sức khỏe & vitamin</a>
+                                </li>
+                                <li>
+                                    <a href="#">Đồ sơ sinh</a>
+                                </li>
+                                <li>
+                                    <a href="#">Đồ chơi điều khiển</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
-    <main class="main"></main>
+    <main class="main">
+        <div class="main__visual">
+            <a href="#">
+                <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100,s_1920x330/https://cdn.tgdd.vn/2023/07/banner/1920x400-1920x400-7.jpg"
+                    alt="Friso hero" />
+            </a>
+        </div>
+        <div class="main__banner">
+            <div class="container">
+                <div class="main__banner--wrapper">
+                    <div class="owl-carousel owl-theme owl__banner">
+                        <div class="owl__banner--item">
+                            <a href="#">
+                                <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100,s_593x181/https://cdn.tgdd.vn/2023/07/banner/720x220-720x220-6.jpg"
+                                    alt="">
+                            </a>
+                        </div>
+                        <div class="owl__banner--item">
+                            <a href="#">
+                                <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100,s_593x181/https://cdn.tgdd.vn/2023/08/banner/720x220-720x220-2.jpg"
+                                    alt="">
+                            </a>
+                        </div>
+                        <div class="owl__banner--item">
+                            <a href="#">
+                                <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100,s_593x181/https://cdn.tgdd.vn/2023/08/banner/720x220-720x220-35.png"
+                                    alt="">
+                            </a>
+                        </div>
+                        <div class="owl__banner--item">
+                            <a href="#">
+                                <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100,s_593x181/https://cdn.tgdd.vn/2023/07/banner/720x220-720x220-10.jpg"
+                                    alt="">
+                            </a>
+                        </div>
+                        <div class="owl__banner--item">
+                            <a href="#">
+                                <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100,s_593x181/https://cdn.tgdd.vn/2023/07/banner/720x220-720x220-86.png"
+                                    alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var owl = $('.owl__banner');
+            owl.owlCarousel({
+                margin: 10,
+                loop: true,
+                nav: true,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 2
+                    }
+                }
+            })
+        </script>
+    </main>
+
     <footer class="footer"></footer>
 </body>
 

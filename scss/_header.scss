@@ -1,6 +1,7 @@
 :root {
     --color-main: #ed1164;
     --color-white: #fff;
+    --color-black: #000;
 }
 
 *,
@@ -183,3 +184,128 @@ body {
         text-decoration: none;
     }
 }
+
+/** Menu dropdown **/
+.menu__dropdown {
+    &--bar {
+        background: #d50050;
+        border-radius: 8px;
+        padding: 10px 12px;
+        cursor: pointer;
+        position: relative;
+        width: 140px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+
+        .line {
+            display: block;
+            background: #fff;
+            width: 20px;
+            height: 2px;
+            margin: 0 4px 6px 0;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .category {
+            margin-left: 5px;
+
+            h2 {
+                color: var(--color-white);
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+            }
+        }
+    }
+}
+
+.menu {
+    padding: 5px 0px 8px 0px;
+}
+
+.menu__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .menu__line {
+        width: 100%;
+        margin-left: 20px;
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+
+            li {
+                a {
+                    text-decoration: none;
+                    color: var(--color-white);
+                    text-transform: uppercase;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+.menu__category {
+    padding: 12px 0;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    display: none;
+
+    ul {
+        align-items: center;
+        display: block;
+        justify-content: space-between;
+        position: relative;
+        text-align: center;
+        width: 240px;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, .3);
+        border-radius: 0 0 8px 8px;
+        z-index: 9;
+        top: 24px;
+
+        >li {
+            border-bottom: 1px solid #ececec;
+            padding: 12px 0;
+            text-align: left;
+            margin: 0 10px;
+
+            >a {
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 16px;
+                position: relative;
+                white-space: nowrap;
+                display: block;
+                text-decoration: none;
+                color: var(--color-black);
+
+                &:hover {
+                    color: var(--color-main);
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.menu__dropdown {
+    &:hover {
+        .menu__category {
+            display: block;
+        }
+    }
+}
+
