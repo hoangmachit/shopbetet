@@ -1,0 +1,18 @@
+
+.footer{
+    margin-top: 1rem;
+}
+.footer__banner{
+    &--wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .left,.right{
+            width: 49%;
+            a,img{
+                border-radius: 5px;
+                display: block;
+            }
+        }
+    }
+}
