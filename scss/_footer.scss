@@ -133,6 +133,34 @@
     }
 }
 
+.footer__tags {
+    margin-bottom: 10px;
+
+    &--wrapper {
+        ul {
+            li {
+                display: inline-block;
+
+                a {
+                    background: #fff;
+                    border-radius: 100px;
+                    padding: 5px 7px;
+                    margin: 0 5px 5px 0;
+                    display: inline-block;
+                    color: #333;
+                    font-size: 14px;
+                    text-decoration: none;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: orange;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .footer__copyright {
     text-align: center;
     background: #fff;

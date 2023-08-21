@@ -22,3 +22,12 @@ owl__product__hot.owlCarousel({
     dots: false,
     items: 5,
 });
+
+var owl__product__puerchased = $('.owl-product-puerchased');
+owl__product__puerchased.owlCarousel({
+    margin: 10,
+    loop: true,
+    nav: false,
+    dots: false,
+    items: 3,
+});
