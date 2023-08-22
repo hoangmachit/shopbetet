@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet"
+        href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../../scss/checkout.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js"></script>
+</head>
+
+<body class="page__checkout">
+    <div class="container">
+        <form action="" method="POST" role="form">
+            <div class="page__checkout--wrapper">
+                <div class="checkout__left">
+                    <div class="checkout__logo">
+                        <img src="" alt="">
+                    </div>
+                    <div class="checkout__heading">
+                        <h2>Thông tin thanh toán</h2>
+                    </div>
+                    <div class="checkout__info">
+                        <div class="c-form">
+                            <input type="text" class="c-control" placeholder="Họ và tên">
+                        </div>
+                        <div class="c-form">
+                            <input type="text" class="c-control" placeholder="Số điện thoại">
+                        </div>
+                        <div class="c-form">
+                            <input type="text" class="c-control" placeholder="Địa chỉ">
+                        </div>
+                        <div class="c-form">
+                            <select name="" class="c-select">
+                                <option value="">---</option>
+                                <option value="">TP Hồ Chí Minh</option>
+                                <option value="">Hà nội</option>
+                            </select>
+                        </div>
+                        <div class="c-form">
+                            <select name="" class="c-select" disabled>
+                                <option value="">Quận/huyện</option>
+                                <option value="">Hoàn kiếm</option>
+                                <option value="">Hà nội</option>
+                            </select>
+                        </div>
+                        <div class="c-form">
+                            <select name="" class="c-select" disabled>
+                                <option value="">Phường/xã</option>
+                                <option value="">Hoàn kiếm</option>
+                                <option value="">Hà nội</option>
+                            </select>
+                        </div>
+                        <div class="c-form">
+                            <textarea name="" class="c-control" cols="30" rows="5" placeholder="Ghi chú"></textarea>
+                        </div>
+                    </div>
+                    <div class="checkout__heading">
+                        <h2>Hình thức thanh toán</h2>
+                    </div>
+                    <div class="checkout__payment__method">
+                        <ul>
+                            <li>
+                                <div class="flex-method">
+                                    <input type="radio" name="paymentMethod" checked value="1">
+                                    <label for="">COD</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex-method">
+                                    <input type="radio" id="momo" name="paymentMethod" value="2">
+                                    <label for="momo">MOMO</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex-method">
+                                    <input type="radio" id="cash" name="paymentMethod" value="3">
+                                    <label for="cash">CASH</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="checkout__right">
+                    <div class="checkout__logo">
+                        <img src="" alt="">
+                    </div>
+                    <div class="checkout__heading">
+                        <h2>Thông tin sản phẩm</h2>
+                    </div>
+                    <div class="checkout__product">
+                        <div class="checkout__product--item">
+                            <div class="product__info">
+                                <div class="thumb">
+                                    <img src="https://cdn.shopify.com/s/files/1/0556/5592/3746/products/NIKE_64x64.jpg?v=1639536530"
+                                        alt="">
+                                    <span class="quantity">2</span>
+                                </div>
+                                <div class="info">
+                                    <h3>Nike Air Force 1 '07</h3>
+                                    <p>選択カード: My content</p>
+                                </div>
+                            </div>
+                            <div class="product__price">
+                                <span>₫2,649,000</span>
+                            </div>
+                        </div>
+                        <div class="checkout__product--item">
+                            <div class="product__info">
+                                <div class="thumb">
+                                    <img src="https://cdn.shopify.com/s/files/1/0556/5592/3746/products/NIKE_64x64.jpg?v=1639536530"
+                                        alt="">
+                                    <span class="quantity">1</span>
+                                </div>
+                                <div class="info">
+                                    <h3>Nike Air Force 1 '07</h3>
+                                    <p>選択カード: My content</p>
+                                </div>
+                            </div>
+                            <div class="product__price">
+                                <span>₫2,649,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout__coupon">
+                        <div class="checkout__coupon--input">
+                            <input type="text" placeholder="Code">
+                        </div>
+                        <div class="checkout__coupon--button">
+                            <button>Apply</button>
+                        </div>
+                    </div>
+                    <div class="checkout__total">
+                        <ul>
+                            <li class="checkout__total--item">
+                                <div class="title">
+                                    <p>Tạm tính</p>
+                                </div>
+                                <div class="price">
+                                    <p>₫2,649,000</p>
+                                </div>
+                            </li>
+                            <li class="checkout__total--item">
+                                <div class="title">
+                                    <p>Shipping</p>
+                                </div>
+                                <div class="price">
+                                    <p>Free</p>
+                                </div>
+                            </li>
+                            <li class="checkout__total--item">
+                                <div class="title">
+                                    <p>Tổng</p>
+                                </div>
+                                <div class="price">
+                                    <p>₫2,913,900</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="checkout__submit">
+                        <button class="submit" type="submit">
+                            Đặt hàng
+                        </button>
+                    </div>
+                    <div class="checkout__back">
+                        <a href="#">
+                            <span class="svg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                                </svg>
+                            </span>
+                            <span class="label">
+                                Quay về trang mua sắm
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
