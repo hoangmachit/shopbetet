@@ -134,12 +134,46 @@ table {
   border-spacing: 0;
 }
 
+.c-form {
+  margin-bottom: 10px;
+}
+.c-form .c-label {
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+.c-form .c-control {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-size: 15px;
+}
+.c-form .c-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: rgba(237, 17, 100, 0.1);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(237, 17, 100, 0.1);
+}
+
 :root {
   --color-main: #ed1164;
   --color-white: #fff;
   --color-black: #000;
   --bg-main: #f4f4f4;
   --bg-white: #fff;
+  --bg-pink: #ed1164;
 }
 
 html {
@@ -792,7 +826,7 @@ Product detail **/
   align-items: center;
 }
 .product__name span {
-  background-color: #ee4d2d;
+  background-color: var(--color-main);
   padding: 0.1875rem 0.25rem;
   text-transform: capitalize;
   color: #fff;
@@ -805,6 +839,7 @@ Product detail **/
   display: inline-flex;
   transform: translateY(-0.125rem);
   font-size: 14px;
+  border-radius: 3px;
 }
 .product__name h1 {
   font-size: 1.25rem;
@@ -1045,17 +1080,23 @@ Product detail **/
   padding-right: 7px;
 }
 
-.product__infomation {
+.product__infomation,
+.product__comment,
+.product__relationship {
   margin: 1rem 0;
   background: var(--bg-white);
   border-radius: 3px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
   padding: 15px;
 }
-.product__infomation .heading {
+.product__infomation .heading,
+.product__comment .heading,
+.product__relationship .heading {
   margin-bottom: 1rem;
 }
-.product__infomation .heading h3 {
+.product__infomation .heading h3,
+.product__comment .heading h3,
+.product__relationship .heading h3 {
   font-weight: bold;
   font-size: 16px;
   margin: 0;
@@ -1201,4 +1242,120 @@ Product detail **/
   padding: 13px 0px;
   font-size: 13px;
   border-top: 1px solid rgba(128, 128, 137, 0.1);
+}
+
+.page__login {
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.page__login--form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.page__login--form .wrapper__form {
+  padding: 20px;
+  border-radius: 5px;
+  background: #Fff;
+  width: 100%;
+  max-width: 420px;
+}
+.page__login--heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.page__login--heading h1 {
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.page__login .btnLogin {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--color-main);
+  background: var(--bg-pink);
+  cursor: pointer;
+  border-radius: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-weight: bold;
+  color: var(--color-white);
+  font-size: 15px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+.page__login .formLoginSocial {
+  border-top: 1px solid #cfd4da;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+}
+.page__login .formLoginSocial__heading {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.page__login .formLoginSocial__heading--title {
+  font-weight: bold;
+}
+
+.formLoginSocial__list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.formLoginSocial__list li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.btn__social {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 15px;
+  color: 353d48;
+  background-color: #fff;
+  border: 1px solid #afb7c1;
+  border-radius: 4px;
+}
+
+.c-remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.c-remember-forgot .c-remember {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.c-remember-forgot .c-remember label {
+  cursor: pointer;
+  margin-left: 3px;
+}
+.c-remember-forgot .c-remember input {
+  position: relative;
+  top: -1px;
+}
+.c-remember-forgot .c-forgot a {
+  color: initial;
+  font-size: 15px;
+}
+
+.c-register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.c-register a {
+  margin-left: 5px;
+  color: #0d6efd;
+  text-decoration: none;
 }/*# sourceMappingURL=app.css.map */

@@ -1,0 +1,135 @@
+.page__login {
+    width: 100%;
+    margin: 1.5rem 0;
+}
+
+.page__login {
+    &--form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+
+        .wrapper__form {
+            padding: 20px;
+            border-radius: 5px;
+            background: #Fff;
+            width: 100%;
+            max-width: 420px;
+        }
+    }
+
+    &--heading {
+        text-align: center;
+        margin-bottom: 20px;
+
+        h1 {
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+    }
+
+    .btnLogin {
+        display: block;
+        width: 100%;
+        border: 1px solid var(--color-main);
+        background: var(--bg-pink);
+        cursor: pointer;
+        border-radius: 5px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-weight: bold;
+        color: var(--color-white);
+        font-size: 15px;
+        text-transform: uppercase;
+        margin-top: 15px;
+    }
+
+    .formLoginSocial {
+        border-top: 1px solid #cfd4da;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+
+        &__heading {
+            margin-bottom: 20px;
+            text-align: center;
+
+            &--title {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.formLoginSocial__list {
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.btn__social {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
+    height: 40px;
+    padding: 0 16px;
+    font-size: 15px;
+    color: 353d48;
+    background-color: #fff;
+    border: 1px solid #afb7c1;
+    border-radius: 4px;
+}
+
+.c-remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .c-remember {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+
+        label {
+            cursor: pointer;
+            margin-left: 3px;
+        }
+
+        input {
+            position: relative;
+            top: -1px;
+        }
+    }
+
+    .c-forgot {
+        a {
+            color: initial;
+            font-size: 15px;
+        }
+    }
+}
+
+.c-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    a {
+        margin-left: 5px;
+        color: #0d6efd;
+        text-decoration: none;
+    }
+}

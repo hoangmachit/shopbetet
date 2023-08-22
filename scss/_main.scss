@@ -3,7 +3,6 @@
         display: flex;
         padding-top: 16px;
         justify-content: space-between;
-
         &--left {
             width: 230px;
             max-height: 100vh;
@@ -425,7 +424,7 @@ Product detail **/
     align-items: center;
 
     span {
-        background-color: #ee4d2d;
+        background-color: var(--color-main);
         padding: .1875rem .25rem;
         text-transform: capitalize;
         color: #fff;
@@ -438,6 +437,7 @@ Product detail **/
         display: inline-flex;
         transform: translateY(-.125rem);
         font-size: 14px;
+        border-radius: 3px;
     }
 
     h1 {
@@ -721,18 +721,22 @@ Product detail **/
     }
 }
 
-.product__infomation {
+.product__infomation,
+.product__comment,
+.product__relationship {
     margin: 1rem 0;
     background: var(--bg-white);
     border-radius: 3px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
     padding: 15px;
-    .heading{
-        h3{
+
+    .heading {
+        h3 {
             font-weight: bold;
             font-size: 16px;
             margin: 0;
         }
+
         margin-bottom: 1rem;
     }
 }
