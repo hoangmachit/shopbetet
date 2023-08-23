@@ -163,6 +163,7 @@ img {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
   line-height: 1.5;
+  font-size: 15px;
 }
 
 .clearfix:after {
@@ -1450,6 +1451,153 @@ Product detail **/
 .product__quantity--inventory {
   padding-left: 20px;
   font-size: 15px;
+}
+
+.box__star {
+  background-color: #fffbf8;
+  min-height: 5rem;
+  border: 1px solid #f9ede5;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 1.875rem;
+}
+.box__star--list {
+  flex: 1;
+  margin-left: 20px;
+}
+.box__star--list ul {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.box__star--list ul li {
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+.box__star--list ul li .overview {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  padding: 5px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  white-space: nowrap;
+}
+.box__star--list ul li.active .overview {
+  border-color: var(--color-main);
+  color: var(--color-main);
+}
+.box__star .star__svg {
+  text-align: center;
+}
+.box__star .star__list ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box__star .star__list svg {
+  height: 24px;
+  width: 24px;
+  fill: #ee4d2d;
+}
+.box__star .star__list svg path {
+  fill: #ee4d2d;
+}
+
+.product__comment--list {
+  margin-top: 20px;
+}
+.product__comment--list .product__comment--item {
+  display: flex;
+}
+.product__comment--list .product__comment--item:not(:last-child) {
+  margin-bottom: 15px;
+}
+.product__comment--list .product__comment--item-avatar {
+  width: 2.5rem;
+  margin-right: 0.625rem;
+  text-align: center;
+}
+.product__comment--list .product__comment--item-avatar .avatar {
+  width: 100%;
+  position: relative;
+  padding-top: 100%;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.product__comment--list .product__comment--item-avatar .avatar svg {
+  stroke: #c6c6c6;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.author__name a {
+  text-decoration: none;
+  color: initial;
+}
+
+.author__star {
+  display: flex;
+}
+.author__star svg {
+  width: 14px;
+  height: 14px;
+  margin-right: 0.125rem;
+  color: #ee4d2d;
+  fill: #ee4d2d;
+}
+
+.author__time {
+  margin-top: 0.25rem;
+  margin-bottom: 0.9375rem;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.product__comment--item-reply {
+  margin-bottom: 0.75rem;
+  background-color: #f5f5f5;
+  padding: 0.875rem 0.75rem;
+  position: relative;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.product__comment--item-reply .content {
+  color: rgba(0, 0, 0, 0.65);
+  margin-top: 0.625rem;
+}
+
+.auth__like {
+  display: flex;
+  align-items: center;
+}
+.auth__like .btnCommentLike {
+  background: transparent;
+  border-radius: 0;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+.auth__like .icon {
+  margin-right: 5px;
+}
+.auth__like .icon svg {
+  fill: rgba(0, 0, 0, 0.3);
+}
+.auth__like .total {
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .page__login {
