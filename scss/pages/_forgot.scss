@@ -1,0 +1,61 @@
+.page__forgot {
+    width: 100%;
+    margin: 1.5rem 0;
+}
+
+.page__forgot {
+    &--form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+
+        .wrapper__form {
+            padding: 20px;
+            border-radius: 5px;
+            background: #Fff;
+            width: 100%;
+            max-width: 420px;
+        }
+    }
+
+    &--heading {
+        text-align: center;
+        margin-bottom: 20px;
+
+        h1 {
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+    }
+
+    .btnForgot {
+        display: block;
+        width: 100%;
+        border: 1px solid var(--color-main);
+        background: var(--bg-pink);
+        cursor: pointer;
+        border-radius: 5px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-weight: bold;
+        color: var(--color-white);
+        font-size: 15px;
+        text-transform: uppercase;
+        margin-top: 15px;
+    }
+}
+
+.c-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+
+    a {
+        margin-left: 5px;
+        color: #0d6efd;
+        text-decoration: none;
+    }
+}
