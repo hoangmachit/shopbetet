@@ -28,6 +28,8 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
     line-height: 1.5;
     font-size: 15px;
+    padding: 0;
+    margin: 0;
 }
 
 .clearfix:after {
@@ -36,7 +38,7 @@ body {
     clear: both;
 }
 
-.container {
+.c-container {
     max-width: 1200px;
     margin: auto;
     width: 100%;

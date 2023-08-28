@@ -88,6 +88,9 @@ Product detail **/
             align-items: center;
             justify-content: start;
             position: relative;
+            margin: 0;
+            padding: 0;
+            list-style: none;
             top: -1px;
             margin-left: 5px;
 
@@ -197,6 +200,9 @@ Product detail **/
         border-radius: 8px;
         display: block;
         line-height: 52px;
+        p{
+            margin: 0;
+        }
     }
 
     .btn-spmarket {
@@ -215,14 +221,18 @@ Product detail **/
         display: flex;
         flex-wrap: wrap;
         font-size: 15px;
-
+        list-style: none;
+        margin: 0;
+        padding: 0;
         >li {
             align-items: center;
             display: flex;
             margin-top: 10px;
             width: calc(50% - 10px);
             margin-right: 10px;
-
+            p{
+                margin: 0;
+            }
             a {
                 text-decoration: none;
                 color: initial;
@@ -604,7 +614,9 @@ Product detail **/
             justify-content: start;
             align-items: center;
             flex-wrap: wrap;
-
+            margin: 0;
+            list-style: none;
+            padding: 0;
             li {
                 margin-right: 15px;
                 margin-bottom: 10px;
@@ -639,6 +651,9 @@ Product detail **/
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
 
         svg {

@@ -12,7 +12,21 @@ owl_favorite.owlCarousel({
     loop: true,
     nav: true,
     dots: false,
-    items: 5,
+    items: 4,
+    responsive: {
+        0: {
+            items: 2,
+            margin: 5,
+        },
+        480: {
+            items: 2,
+            margin: 5,
+        },
+        768: {
+            items: 3,
+            margin: 5,
+        }
+    }
 });
 var owl__product__hot = $('.owl__product__hot');
 owl__product__hot.owlCarousel({
@@ -20,7 +34,21 @@ owl__product__hot.owlCarousel({
     loop: true,
     nav: true,
     dots: false,
-    items: 5,
+    items: 4,
+    responsive: {
+        0: {
+            items: 2,
+            margin: 5,
+        },
+        480: {
+            items: 2,
+            margin: 5,
+        },
+        768: {
+            items: 3,
+            margin: 5,
+        }
+    }
 });
 
 var owl__product__puerchased = $('.owl-product-puerchased');
