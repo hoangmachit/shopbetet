@@ -25,6 +25,10 @@ owl_favorite.owlCarousel({
         768: {
             items: 3,
             margin: 5,
+        },
+        1024: {
+            items: 4,
+            margin: 5,
         }
     }
 });
@@ -47,6 +51,10 @@ owl__product__hot.owlCarousel({
         768: {
             items: 3,
             margin: 5,
+        },
+        1024: {
+            items: 4,
+            margin: 5,
         }
     }
 });
@@ -58,6 +66,24 @@ owl__product__puerchased.owlCarousel({
     nav: false,
     dots: false,
     items: 3,
+    responsive: {
+        0: {
+            items: 2,
+            margin: 5,
+        },
+        480: {
+            items: 2,
+            margin: 5,
+        },
+        768: {
+            items: 2,
+            margin: 5,
+        },
+        1024: {
+            items: 3,
+            margin: 5,
+        }
+    }
 });
 
 var owl__gallery = $('.owl__gallery');
@@ -67,6 +93,24 @@ owl__gallery.owlCarousel({
     nav: true,
     dots: false,
     items: 6,
+    responsive: {
+        0: {
+            items: 4,
+            margin: 5,
+        },
+        480: {
+            items: 4,
+            margin: 5,
+        },
+        768: {
+            items: 5,
+            margin: 5,
+        },
+        1024: {
+            items: 6,
+            margin: 5,
+        }
+    }
 });
 $(document).on('click', '.owl__gallery .owl-item', function () {
     const index = $(this).index();
