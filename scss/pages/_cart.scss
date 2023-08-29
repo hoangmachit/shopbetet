@@ -74,12 +74,6 @@
             flex-direction: column;
             width: 15.88022%;
             font-size: 15px;
-
-            .price--current {
-                color: rgba(0, 0, 0, .54);
-                text-decoration: line-through;
-            }
-
             .price--sale {
                 margin: 0;
             }
@@ -111,6 +105,14 @@
                 background: #ebebeb;
                 padding: 0;
                 margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: initial;
+
+                span {
+                    line-height: 1;
+                }
 
                 svg {
                     path {
@@ -199,14 +201,33 @@
     padding-top: 20px;
 
     &--list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
         li:not(:last-child) {
             margin-bottom: 10px;
+        }
+
+        p {
+            margin: 0;
         }
 
         b {
             font-weight: bold;
             font-size: 16px;
         }
+    }
+
+    .btnUpdate {
+        display: block;
+        width: 100%;
+        border: 1px solid #333333;
+        background: #333333;
+        color: var(--color-white);
+        padding: 15px 25px;
+        border-radius: 4px;
+        cursor: pointer;
     }
 
     .btnPayment {
@@ -218,10 +239,26 @@
         padding-top: 15px;
         padding-bottom: 15px;
         cursor: pointer;
+        border-radius: 4px;
 
         span {
             font-weight: bold;
             text-transform: uppercase;
         }
+    }
+}
+
+.cart-empty {
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+
+    p {
+        margin: 0;
     }
 }

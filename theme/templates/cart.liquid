@@ -1,46 +1,211 @@
-{% if cart.item_count > 0 %}
-  <h1>cart</h1>
-  <form action="/cart" method="post" novalidate>
-    <table>
-      <thead>
-        <th colspan="2">Prod</th>
-        <th>Price</th>
-        <th>Qty</th>
-        <th>total</th>
-      </thead>
-      <tbody>
-        {% for item in cart.items %}
-          <tr>
-            <td>
-              <a href="{{ item.url | within: collections.all }}">
-                <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
-              </a>
-            </td>
-            <td>
-              <a href="{{ item.url }}">{{ item.product.title }}</a>
-              {{ item.variant.title }}
-              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">remove</a>
-            </td>
-            <td>{{ item.price | money }}</td>
-            <td>
-              <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0">
-            </td>
-            <td>
-              {% if item.original_line_price != item.line_price %}{{ item.original_line_price | money }}{% endif %}
-              {{ item.line_price | money }}
-              {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    <div>
-      <p>sub total : {{ cart.total_price | money }}</p>
-      <button type="submit" name="update">Update</button>
-      <button type="submit" name="checkout">Checkout</button>
+<div class="page__cart">
+  <nav class="main__breadcumb" aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Home</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Cart</li>
+    </ol>
+  </nav>
+  <div class="page__cart--wrapper">
+    <div class="cart__head">
+      <div class="product__name">
+        Sản phẩm
+      </div>
+      <div class="product__price">
+        Đơn giá
+      </div>
+      <div class="product__quantity">
+        Số lượng
+      </div>
+      <div class="product__total">
+        Số tiền
+      </div>
+      <div class="product__action">
+        Thao tác
+      </div>
     </div>
-  </form>
+    {% if cart.item_count > 0 %}
+      <form
+        action="/cart"
+        method="POST"
+        novalidate>
+        <div class="cart__body">
+
+
+
+          {% for item in cart.items %}
+            <div class="card__item">
+              <div class="product__info">
+                <div class="thumb">
+                  <a href="{{ item.url | within: collections.all }}">
+                    <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                  </a>
+                </div>
+                <div class="info">
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                  <div>
+                    {{ item.variant.title }}
+                  </div>
+                </div>
+              </div>
+              <div class="product__price">
+                <div>
+                  <span class="price--sale">{{ item.price | money }}</span>
+                </div>
+              </div>
+              <div class="product__quantity">
+                <div class="product__quantity--form">
+                  <div class="formQuantity">
+                    <button class="btnMinus" type="button">
+                      <span class="svg">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-dash-lg"
+                          viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z" />
+                        </svg>
+                      </span>
+                    </button>
+                    <input
+                      type="number"
+                      name="updates[]"
+                      class="quantity"
+                      id="updates_{{ item.key }}"
+                      value="{{ item.quantity }}"
+                      min="0" />
+                    <button class="btnMinus" type="button">
+                      <span class="svg">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-plus-lg"
+                          viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="product__total">
+                <span>
+                  {% if item.original_line_price != item.line_price %}
+                    {{ item.original_line_price | money }}{% endif %}
+                  {{ item.line_price | money }}
+                  {% for discount in item.discounts %}
+                    {{ discount.title }}{% endfor %}
+                </span>
+              </div>
+              <div class="product__action">
+                <a class="btnDelete" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                  <span class="svg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-trash3"
+                      viewBox="0 0 16 16">
+                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="cart__footer">
+          <div class="cart__footer--action">
+            <button
+              name="submit"
+              class="btnUpdate"
+              name="update">Cập nhật giỏ hàng</button>
+          </div>
+          <div class="cart__footer--payment">
+            <ul class="cart__footer--list">
+              <li>
+                <p>Đơn hàng tạm tính:
+                  <b>{{ cart.total_price | money }}</b>
+                </p>
+              </li>
+              <li>
+                <button
+                  class="btnPayment"
+                  type="submit"
+                  name="checkout">
+                  <span>Thanh toán</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    {% else %}
+      <div class="cart-empty">
+        <p>Giỏ hàng trống</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% comment %} {% if cart.item_count > 0 %}
+<h1>cart</h1>
+<form
+action="/cart"
+method="post"
+novalidate>
+<table>
+<thead>
+<th colspan="2">Prod</th>
+<th>Price</th>
+<th>Qty</th>
+<th>total</th>
+</thead>
+<tbody>
+{% for item in cart.items %}
+<tr>
+<td>
+<a href="{{ item.url | within: collections.all }}">
+<img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+</a>
+</td>
+<td>
+<a href="{{ item.url }}">{{ item.product.title }}</a>
+{{ item.variant.title }}
+<a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">remove</a>
+</td>
+<td>{{ item.price | money }}</td>
+<td>
+<input
+type="number"
+name="updates[]"
+id="updates_{{ item.key }}"
+value="{{ item.quantity }}"
+min="0">
+</td>
+<td>
+{% if item.original_line_price != item.line_price %}
+{{ item.original_line_price | money }}{% endif %}
+{{ item.line_price | money }}
+{% for discount in item.discounts %}
+{{ discount.title }}{% endfor %}
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<div>
+<p>sub total : {{ cart.total_price | money }}</p>
+<button type="submit" name="update">Update</button>
+<button type="submit" name="checkout">Checkout</button>
+</div>
+</form>
 {% else %}
-  <h2>cart</h2>
-  Cart is empty
-{% endif %}
+<h2>cart</h2>
+Cart is empty
+{% endif %} {% endcomment %}
