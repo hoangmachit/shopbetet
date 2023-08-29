@@ -89,7 +89,7 @@ body {
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml, %3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 16px 12px;
@@ -180,7 +180,7 @@ body {
 
 [class^=icon-logo-],
 [class*=icon-logo-] {
-  background-image: url(//cdn.tgdd.vn/mwgcart/bluekids/images/common/desktop/icon_common@2x.webp);
+  background-image: url('//cdn.tgdd.vn/mwgcart/bluekids/images/common/desktop/icon_common@2x.webp');
   background-repeat: no-repeat;
   display: inline-block;
   line-height: 30px;
@@ -261,7 +261,7 @@ body {
 }
 
 .menu {
-  padding: 5px 0px 8px 0px;
+  padding: 5px 0 8px;
 }
 
 .menu__wrapper {
@@ -359,7 +359,7 @@ body {
   padding-left: 14px;
 }
 .main__breadcumb .breadcrumb li:not(:first-child)::before {
-  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="11" viewBox="0 0 6 11"><path fill="%23808089" fill-rule="evenodd" clip-rule="evenodd" d="M0.646447 0.646447C0.841709 0.451184 1.15829 0.451184 1.35355 0.646447L6.35355 5.64645C6.54882 5.84171 6.54882 6.15829 6.35355 6.35355L1.35355 11.3536C1.15829 11.5488 0.841709 11.5488 0.646447 11.3536C0.451184 11.1583 0.451184 10.8417 0.646447 10.6464L5.29289 6L0.646447 1.35355C0.451184 1.15829 0.451184 0.841709 0.646447 0.646447Z"></path></svg>');
+  content: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" width="6" height="11" viewBox="0 0 6 11"><path fill="%23808089" fill-rule="evenodd" clip-rule="evenodd" d="M0.646447 0.646447C0.841709 0.451184 1.15829 0.451184 1.35355 0.646447L6.35355 5.64645C6.54882 5.84171 6.54882 6.15829 6.35355 6.35355L1.35355 11.3536C1.15829 11.5488 0.841709 11.5488 0.646447 11.3536C0.451184 11.1583 0.451184 10.8417 0.646447 10.6464L5.29289 6L0.646447 1.35355C0.451184 1.15829 0.451184 0.841709 0.646447 0.646447Z"></path></svg>');
   position: absolute;
   left: 0;
   top: 0;
@@ -393,7 +393,7 @@ body {
   border-radius: 50px;
   display: block;
   height: 1px;
-  margin: 0px auto;
+  margin: 0 auto;
   position: relative;
   transition: 0.3s;
   width: 26px;
@@ -451,7 +451,7 @@ body {
   background-position: -105px -260px;
   height: 41px;
   width: 194px;
-  background-image: url(//cdn.tgdd.vn/mwgcart/bluekids/images/common/desktop/icon_common@2x.webp);
+  background-image: url('//cdn.tgdd.vn/mwgcart/bluekids/images/common/desktop/icon_common@2x.webp');
   background-repeat: no-repeat;
   display: inline-block;
   line-height: 30px;
@@ -673,16 +673,15 @@ body {
   overflow: hidden;
 }
 .main__banner .owl__banner .owl-dots {
-  margin: 0px;
+  margin: 0 auto;
   position: absolute;
   left: 0;
   bottom: 15px;
   right: 0;
-  margin: 0 auto;
 }
 .main__banner .owl__banner .owl-dots .owl-dot span {
   background-color: rgba(255, 255, 255, 0.5);
-  margin: 0px 2px;
+  margin: 0 2px;
   width: 24px;
   height: 2px;
   border-radius: unset;
@@ -823,7 +822,7 @@ body {
   border: 1px solid rgba(235, 235, 240, 0.5);
 }
 .product__item:hover {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px;
   z-index: 1;
 }
 .product__item--thumb {
@@ -839,7 +838,7 @@ body {
   display: inline-block;
   height: 18px;
   margin-left: 4px;
-  padding: 0px 4px;
+  padding: 0 4px;
   background: #f00;
   border-radius: 4px;
   color: #fff;
@@ -854,11 +853,9 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 4px 8px;
-  padding-bottom: 8px;
+  padding: 4px 8px 8px;
 }
 .product__item--info .name {
-  margin-top: 4px;
   margin: 0;
   line-height: 1;
 }
@@ -925,7 +922,7 @@ body {
   position: absolute;
   width: 100%;
   z-index: 2;
-  left: 0px;
+  left: 0;
   top: calc(50% - 22.5px);
   display: flex;
   justify-content: space-between;
@@ -1125,7 +1122,7 @@ body {
   text-align: center;
   background: #fff;
   text-align: center;
-  padding: 13px 0px;
+  padding: 13px 0;
   font-size: 13px;
   border-top: 1px solid rgba(128, 128, 137, 0.1);
 }
@@ -1214,11 +1211,10 @@ Product detail **/
   align-items: center;
   justify-content: start;
   position: relative;
-  margin: 0;
+  margin: 0 0 0 5px;
   padding: 0;
   list-style: none;
   top: -1px;
-  margin-left: 5px;
 }
 .product__star_view_buy .product_star ul li span {
   width: 16px;
@@ -1252,10 +1248,8 @@ Product detail **/
 .product__price__code {
   display: flex;
   justify-content: space-between;
-  margin: 0 0 10px;
+  margin: 1rem 0;
   align-items: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .product__price span {
@@ -1355,7 +1349,7 @@ Product detail **/
 }
 .product__policy--list .icon svg {
   position: absolute;
-  left: 0px;
+  left: 0;
   top: 0;
   width: 100%;
   height: 100%;
@@ -1465,7 +1459,7 @@ Product detail **/
 
 .owl__gallery .owl-nav {
   position: absolute;
-  left: 0px;
+  left: 0;
   width: 100%;
   top: 15px;
 }
@@ -2256,13 +2250,13 @@ Product detail **/
   background: var(--bg-white);
   padding: 15px;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px;
 }
 .customer__page .customer__right {
   width: 73%;
   background: var(--bg-white);
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px;
 }
 
 .customer__infomation,
@@ -2297,7 +2291,7 @@ Product detail **/
 }
 .customer__infomation li.active a,
 .customer__order li.active a {
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 20px;
 }
 
 .customer__heading {
@@ -2409,9 +2403,7 @@ Product detail **/
 }
 
 .customer__footer {
-  padding: 15px;
-  padding-left: 138px;
-  padding-bottom: 20px;
+  padding: 15px 15px 20px 138px;
 }
 .customer__footer .btnSubmit {
   height: 40px;
@@ -2438,14 +2430,13 @@ Product detail **/
   }
   .main__wrapper {
     flex-wrap: wrap;
-    padding-top: 5px;
     flex-direction: column-reverse;
+    padding-top: 5px;
   }
   .main__wrapper--left {
     width: 100%;
     max-height: 100%;
-    padding-bottom: 10px;
-    margin-top: 10px;
+    padding-bottom: 15px;
   }
   .main__wrapper--right {
     width: 100%;
@@ -2454,45 +2445,16 @@ Product detail **/
     margin-bottom: 0;
     border-radius: 0;
   }
-  .main__wrapper .list__category--left .heading {
-    margin-bottom: 10px;
-  }
-  .main__wrapper .list__category--left .heading h2 {
-    padding-left: 0;
-  }
   .main__wrapper .list__category--left .category {
-    display: flex;
-    white-space: nowrap;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    padding-bottom: 10px;
-  }
-  .main__wrapper .list__category--left .category__item {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-  }
-  .main__wrapper .list__category--left .category__item:not(:last-child) {
-    margin-right: 15px;
-  }
-  .main__wrapper .list__category--left .category__item .icon {
-    margin: 0;
-    margin-bottom: 10px;
-    max-width: 32px;
-  }
-  .main__wrapper .list__category--left .category__item .icon img {
-    width: 100%;
-    height: 100%;
-  }
-  .main__wrapper .list__category--left .category__item .text {
-    word-wrap: break-word;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
   .header__bottom--wrapper {
     flex-wrap: wrap;
   }
   .header__bottom--search {
-    margin-left: 0px;
+    margin-left: 0;
     margin-top: 10px;
   }
   .header__bottom--search #form-seach {
@@ -2705,4 +2667,4 @@ Product detail **/
   .product__price .price-current {
     font-size: 28px;
   }
-}/*# sourceMappingURL=app.css.map */
+} /*# sourceMappingURL=app.css.map */

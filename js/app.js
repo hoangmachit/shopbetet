@@ -119,3 +119,11 @@ $(document).on('click', '.owl__gallery .owl-item', function () {
     $('.product__detail--left .thumbs__main picture img').attr('src', image);
 });
 
+$(document).on('click', '.btnMenuMobile', function (e) {
+    e.preventDefault();
+    $('.menu__mobile--nav').addClass('active');
+});
+$(document).on('click', '.btnCloseMenu', function (e) {
+    e.preventDefault();
+    $('.menu__mobile--nav').removeClass('active');
+});

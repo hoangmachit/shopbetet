@@ -303,9 +303,9 @@
 
 .header__bottom {
     &--mobile {
-        display: flex;
         justify-content: end;
         align-items: center;
+        display: none;
     }
 
     &--menu {
@@ -383,6 +383,198 @@
             right: -5px;
             text-align: center;
             min-width: 15px;
+        }
+    }
+}
+
+/** Menu mobile **/
+.menu__mobile {
+
+    &--logo {
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--bg-pink);
+
+        .logo {
+            background-position: -105px -260px;
+            height: 41px;
+            width: 194px;
+            background-image: url(//cdn.tgdd.vn/mwgcart/bluekids/images/common/desktop/icon_common@2x.webp);
+            background-repeat: no-repeat;
+            display: inline-block;
+            line-height: 30px;
+            vertical-align: middle;
+            background-size: 350px 350px;
+        }
+
+        .shopping-close {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+
+            .shopping {
+                margin-right: 15px;
+            }
+
+            .icon {
+                height: 26px;
+                width: 26px;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .svg {
+                    display: block;
+                    position: relative;
+                    width: 20px;
+                    height: 20px;
+                }
+
+                svg {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    fill: #fff;
+                }
+            }
+
+            .count {
+                background-color: #fff;
+                border-radius: 50%;
+                bottom: -5px;
+                color: #ed1164;
+                font-size: 9px;
+                font-weight: 600;
+                line-height: 15px;
+                position: absolute;
+                right: -5px;
+                text-align: center;
+                min-width: 15px;
+            }
+        }
+
+        .btnCloseMenu {
+            border-radius: 0;
+            padding: 0;
+            height: 24px;
+            width: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: none;
+            background: transparent;
+
+            svg {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                fill: #fff;
+            }
+        }
+    }
+
+    &--search {
+        width: 100%;
+        background: var(--bg-pink);
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+
+        #form__seach--mobile {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--color-white);
+            border-radius: 5px;
+        }
+
+        #search__mobile {
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            line-height: 34px;
+            height: 34px;
+            padding-left: 15px;
+            width: 100%;
+        }
+
+        #btnSearchMobile {
+            height: 34px;
+            width: 50px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    }
+
+    &--nav {
+        transition: .3s ease-in-out;
+        box-shadow: 6px 0 25px #00000026;
+        transform: translateY(-105%);
+        background-color: #fff;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        z-index: 9999;
+        right: 0;
+        visibility: hidden;
+        opacity: 0;
+
+        &.active {
+            transform: translateY(0);
+            visibility: visible;
+            opacity: 1;
+        }
+
+        nav {
+            padding: 10px;
+            height: 100%;
+            overflow-y: scroll;
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            li {
+                border-bottom: 1px solid #dfdfdf;
+                position: relative;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                h3 {
+                    font-size: 14px;
+                    line-height: 1.4;
+                    margin: 0;
+                    font-weight: normal;
+                }
+
+                a {
+                    padding: 15px 0;
+                    transition: .3s;
+                    text-decoration: none;
+                    display: block;
+                    color: #222;
+                }
+            }
         }
     }
 }
