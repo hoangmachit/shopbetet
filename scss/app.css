@@ -2741,4 +2741,26 @@ Product detail **/
   .product__price .price-current {
     font-size: 28px;
   }
+  .cart__body .card__item {
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .cart__body .card__item .product__info {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .cart__body .card__item .product__action {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .cart__body .card__item .product__price {
+    width: 20%;
+  }
+  .cart__body .card__item .product__quantity {
+    width: 50%;
+  }
+  .cart__body .card__item .product__total {
+    width: 20%;
+  }
 }/*# sourceMappingURL=app.css.map */

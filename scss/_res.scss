@@ -393,6 +393,38 @@
         }
     }
 
+    .cart__body {
+        .card__item {
+            flex-wrap: wrap;
+            position: relative;
+
+            .product__info {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .product__action {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            .product__price {
+                width: 20%;
+            }
+
+            .product__quantity {
+                width: 50%;
+            }
+
+            .product__total {
+                width: 20%;
+            }
+        }
+
+    }
+
+
 }
 
 @media screen and (max-width: 520px) and (min-width: 376px) {}
