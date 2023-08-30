@@ -127,4 +127,56 @@ $(document).ready(function () {
         e.preventDefault();
         $('.menu__mobile--nav').removeClass('active');
     });
+
+    //Product detail
+    $('body').on('click', '.btnMinus,.btnPlus', function (e) {
+        e.preventDefault();
+        const qty = $('input[name="qty"]');
+        const quantity = $('input[name="quantity"]');
+        const action = $(this).data('action');
+        let value = qty.val();
+        if (action == 'minus') {
+            value = parseInt(value) - 1;
+        }
+        else {
+            value = parseInt(value) + 1;
+        }
+        qty.val(value);
+        quantity.val(value);
+    });
+    $('body').on('change', '.variant_radio', function (e) {
+        e.preventDefault();
+        let jsonData = $('#productVariants').text();
+        let dataJson = JSON.parse(jsonData);
+        var checkedRadioValues = {};
+        var variantRadio = $('.variant_radio');
+        var selectedOptions = {};
+        variantRadio.each(function (index, element) {
+            const _this = $(element);
+            if (_this.is(":checked")) {
+                var radioButtonName = _this.attr('name');
+                var radioButtonValue = _this.val();
+                selectedOptions[radioButtonName] = radioButtonValue;
+            }
+        });
+        dataJson.forEach(function (item) {
+            var isMatching = true;
+            for (var key in selectedOptions) {
+                if (!item.options.includes(selectedOptions[key])) {
+                    isMatching = false;
+                    break;
+                }
+            }
+            if (isMatching) {
+                checkedRadioValues = item;
+            }
+        });
+        $('input[name="id"]').val(checkedRadioValues.id);
+    });
+    $('body').on('click', '#btn-addcart', function (e) {
+        e.preventDefault();
+        const formCart = $('#AddToCartForm');
+        formCart.submit();
+    });
 });
+

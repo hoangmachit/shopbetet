@@ -1,29 +1,1206 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
-<img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
-{% for image in product.images %}
-  <a href="{{ image.src | img_url: 'large' }}">
-    <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
-  </a>
-{% endfor %}
-<h1>{{ product.title }}</h1>
-<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
-  <select name="id" id="productSelect">
-    {% for variant in product.variants %}
-      {% if variant.available %}
-        <option value="{{ variant.id }}">
-          {{ variant.title }} - {{ variant.price | money_with_currency }}
-        </option>
-      {% else %}
-        <option disabled="disabled">
-          {{ variant.title }} - sold out
-        </option>
-      {% endif %}
-    {% endfor %}
-  </select>
-  {{ current_variant.price | money }}
-  <label for="Quantity">quantity</label>
-  <input type="number" id="Quantity" name="quantity" value="1" min="1">
-  <button type="submit" name="add" id="AddToCart">Add to cart</button>
-</form>
-<div>{{ product.description }}</div>
+<div class="main__wrapper--product_detail">
+  <nav class="main__breadcumb" aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/danh-muc-cha">Product</a></li>
+          <li class="breadcrumb-item"><a href="/danh-muc-cha/danh-muc-con">Sữa</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
+      </ol>
+  </nav>
+  <div class="product__detail">
+      <div class="product__detail--left">
+          <div class="thumbs__main">
+              <picture>
+                  <img src="{{ featured_image | img_url: 'large' }}"
+                      alt="{{ featured_image.alt | escape }}">
+              </picture>
+          </div>
+          <div class="thumb__gallery">
+              <div class="owl__gallery owl-carousel owl-theme">
+                {% for image in product.images %}
+                  <div class="product__thumb--item" data-image="{{ image.src | img_url: 'compact' }}">
+                      <picture>
+                          <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+                      </picture>
+                  </div>
+                {% endfor %}
+              </div>
+          </div>
+          <div class="product__purchased--together">
+              <div class="owl-product-puerchased owl-carousel owl-theme">
+                  <div class="product__puerchased--item">
+                      <div class="thumbs">
+                          <a href="#">
+                              <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100,s_300x300/https://cdn.tgdd.vn/Products/Images/9943/259244/bam-mong-tay-cho-be-bang-thep-khong-gi-kuku-ku3019-600x600.jpg"
+                                  alt="">
+                          </a>
+                      </div>
+                      <div class="info">
+                          <h3 class="name">
+                              <a href="#">
+                                  Set 3 cái khăn sữa cotton KuKu KU2383 - Màu ngẫu nhiên
+                              </a>
+                          </h3>
+                          <div class="price">
+                              <span class="price-current">89.000đ</span>
+                              <span class="price--old">90.000đ</span>
+                          </div>
+                      </div>
+                      <div class="cart">
+                          <button id="btnAddToCart">Chọn mua</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="product__detail--right">
+          <div class="flex-auto">
+              <div class="product__name">
+                  <span>Yêu thích</span>
+                  <h1>{{ product.title }}</h1>
+              </div>
+              <div class="product__star_view_buy">
+                  <div class="product_star">
+                      <div class="svg-star">
+                          4.9
+                      </div>
+                      <ul>
+                          <li>
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0"
+                                      class="shopee-svg-icon shopee-rating-stars__primary-star icon-rating-solid">
+                                      <polygon
+                                          points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-miterlimit="10"></polygon>
+                                  </svg>
+                              </span>
+                          </li>
+                          <li>
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0"
+                                      class="shopee-svg-icon shopee-rating-stars__primary-star icon-rating-solid">
+                                      <polygon
+                                          points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-miterlimit="10"></polygon>
+                                  </svg>
+                              </span>
+                          </li>
+                          <li>
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0"
+                                      class="shopee-svg-icon shopee-rating-stars__primary-star icon-rating-solid">
+                                      <polygon
+                                          points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-miterlimit="10"></polygon>
+                                  </svg>
+                              </span>
+                          </li>
+                          <li>
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0"
+                                      class="shopee-svg-icon shopee-rating-stars__primary-star icon-rating-solid">
+                                      <polygon
+                                          points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-miterlimit="10"></polygon>
+                                  </svg>
+                              </span>
+                          </li>
+                          <li>
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0"
+                                      class="shopee-svg-icon shopee-rating-stars__primary-star icon-rating-solid">
+                                      <polygon
+                                          points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-miterlimit="10"></polygon>
+                                  </svg>
+                              </span>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="product_view">
+                      <div class="total">2.8k</div>
+                      <div class="text">Đánh giá</div>
+                  </div>
+                  <div class="product_buy">
+                      <div class="total">2.8k</div>
+                      <div class="text">Đã bán</div>
+                  </div>
+              </div>
+              <div class="product__share__favorite">
+                  <div class="share">
+                      <div class="title">Chia sẽ: </div>
+                      <button class="btn-share btnShareMessage" title="Share on Messenger"
+                          type="button">
+                          <span class="svg">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-messenger" viewBox="0 0 16 16">
+                                  <path
+                                      d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z" />
+                              </svg>
+                          </span>
+                      </button>
+                      <button class="btn-share btnShareFacebook" title="Share on Facebook"
+                          type="button">
+                          <span class="svg">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                  <path
+                                      d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                              </svg>
+                          </span>
+                      </button>
+                      <button class="btn-share btnSharePinterest" title="Share on Pinterest"
+                          type="button">
+                          <span class="svg">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-pinterest" viewBox="0 0 16 16">
+                                  <path
+                                      d="M8 0a8 8 0 0 0-2.915 15.452c-.07-.633-.134-1.606.027-2.297.146-.625.938-3.977.938-3.977s-.239-.479-.239-1.187c0-1.113.645-1.943 1.448-1.943.682 0 1.012.512 1.012 1.127 0 .686-.437 1.712-.663 2.663-.188.796.4 1.446 1.185 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.254-3.342-3.254-2.276 0-3.612 1.707-3.612 3.471 0 .688.265 1.425.595 1.826a.24.24 0 0 1 .056.23c-.061.252-.196.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.834-4.84 5.286-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.739 4.976-4.151 4.976-.811 0-1.573-.421-1.834-.919l-.498 1.902c-.181.695-.669 1.566-.995 2.097A8 8 0 1 0 8 0z" />
+                              </svg>
+                          </span>
+                      </button>
+                      <button class="btn-share btnShareTwitter" title="Share on Twitter"
+                          type="button">
+                          <span class="svg">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                                  <path
+                                      d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                              </svg>
+                          </span>
+                      </button>
+                  </div>
+                  <div class="favorite">
+                      <button class="btnFavorite" tabindex="0" type="button">
+                          <svg width="24" height="20" class="x0F377">
+                              <path
+                                  d="M19.469 1.262c-5.284-1.53-7.47 4.142-7.47 4.142S9.815-.269 4.532 1.262C-1.937 3.138.44 13.832 12 19.333c11.559-5.501 13.938-16.195 7.469-18.07z"
+                                  stroke="#FF424F" stroke-width="1.5" fill="none" fill-rule="evenodd"
+                                  stroke-linejoin="round"></path>
+                          </svg>
+                          <div class="btnFavorite__title">Đã thích (907)</div>
+                      </button>
+                  </div>
+              </div>
+              <div class="product__price__code">
+                  <div class="product__price">
+                      <span class="price-current">216.000₫</span>
+                      <span class="price-old">240.000₫</span>
+                      <span class="price-percent">-10%</span>
+                  </div>
+                  <div class="product_code">
+                      <span class="product-code">#292741</span>
+                  </div>
+              </div>
+              
+              <div class="product__promotion">
+                  <p class="box-promo-txt">Khuyến mãi (Đến 31/08)</p>
+                  <ul class="box-promo-list">
+                      <li class="divb t3" data-promotion="1721496" data-group="WebNote"
+                          data-discount="0" data-productcode="" data-tovalue="100">
+
+                          Cơ hội quay số trúng nhiều quà tặng hấp dẫn cho đơn hàng từ 500.000đ <a
+                              href="https://www.avakids.com/me-va-be/co-hoi-quay-so-trung-tu-lanh-va-nhieu-qua-tang-1538472  "
+                              target="_blank">(click xem chi tiết)</a> </li>
+                      <li class="divb t3" data-promotion="1718165" data-group="WebNote"
+                          data-discount="0" data-productcode="" data-tovalue="81">
+
+                          Tặng suất mua kèm Thiết bị làm đẹp Giảm 40% (không áp dụng khuyến mãi khác)
+                      </li>
+                      <li class="divb t3" data-promotion="1720883" data-group="WebNote"
+                          data-discount="0" data-productcode="" data-tovalue="80">
+
+                          Nhập mã khuyến mãi VNPAYAVA20 giảm 5% tối đa 20.000đ khi thanh toán qua
+                          VNPAY-QR <a
+                              href="https://www.avakids.com/me-va-be/uu-dai-thanh-toan-vnpay-avakids-giam-den-5-toi-da-1536008"
+                              target="_blank">Xem chi tiết tại đây.</a> </li>
+                  </ul>
+              </div>
+              <div class="product__variants">
+                {%- for option in product.options_with_values -%}
+                    <fieldset class="product__variants--option">
+                      <legend class="product__variants--label">{{ option.name }}</legend>
+                      {%- for value in option.values -%}
+                        <input type="radio" class="variant_radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                              name="{{ option.name }}"
+                              value="{{ value | escape }}"
+                              form="{{ product_form_id }}"
+                              {% if option.selected_value == value %}checked{% endif %}
+                        >
+                        <label class="variant_label" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                          {{ value }}
+                        </label>
+                      {%- endfor -%}
+                    </fieldset>
+                {%- endfor -%}
+                <script type="application/json" id="productVariants">
+                    {{ product.variants | json }}
+                </script>
+              </div>
+              <div class="product__quantity">
+                  <div class="product__quantity--title">
+                      <span>Số lượng</span>
+                  </div>
+                  <div class="product__quantity--wrapper">
+                      <button class="btnMinus" type="button" data-action="minus">
+                          <span class="svg">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                      d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z" />
+                              </svg>
+                          </span>
+                      </button>
+                      <input type="text" class="quantity" name="qty" value="1" />
+                      <button class="btnPlus" type="button"  data-action="plus">
+                          <span class="svg">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                      d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                              </svg>
+                          </span>
+                      </button>
+                  </div>
+                  <div class="product__quantity--inventory">
+                      <span>Có sẳn <b>120</b> sản phẩm</span>
+                  </div>
+              </div>
+              <div class="product__btn__cart">
+                  <button class="btn btn-addcart" type="submit" name="add" id="btn-addcart">
+                      <p class="txt">MUA NGAY</p>
+                  </button>
+                  <span class="btn btn-spmarket">Thêm vào giỏ hàng</span>
+              </div>
+              <div class="product__form--submit">
+                <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" style="display: none;">
+                    <input type="hidden" name="form_type" value="product">
+                    <input type="hidden" name="utf8" value="✓">
+                    <input type="hidden" name="id" value="">
+                    <input type="hidden" id="Quantity" name="quantity" value="1" min="1">
+                    <button type="submit" name="add" id="AddToCart">Add to cart</button>
+                </form>
+              </div>
+              <div class="product__policy">
+                  <ul class="product__policy--list">
+                      <li class="">
+                          <div class="icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
+                                  <path
+                                      d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z" />
+                              </svg>
+                          </div>
+                          <p>Tổng đài: <a href="tel:1900866874">1900.866.874</a><br>(7h30 - 22h00)</p>
+                      </li>
+                      <li class="">
+                          <div class="icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-currency-dollar"
+                                  viewBox="0 0 16 16">
+                                  <path
+                                      d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                              </svg>
+                          </div>
+                          <p>Hoàn tiền, đổi trả trong <b>7 ngày</b> <a href=""> Xem chi tiết </a>
+                          </p>
+                      </li>
+                      <li class="">
+                          <div class="icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                  <path
+                                      d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                                  <path fill-rule="evenodd"
+                                      d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                              </svg>
+                          </div>
+                          <p>Giao hàng thu tiền, thanh toán online nhiều phương thức</p>
+                      </li>
+                  </ul>
+              </div>
+              <div class="product__detail__infomation">
+                  <p>Đây là đoạn mô tả về phần thông tin chi tiết của product</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="product__infomation">
+      <div class="heading">
+          <h3>Thông tin chi tiết</h3>
+      </div>
+      <div class="product__infomation--content">
+        {{ product.description }}
+      </div>
+  </div>
+  <div class="product__comment">
+      <div class="heading">
+          <h3>Đánh giá khách hàng</h3>
+      </div>
+      <div class="product__comment--wrapper">
+          <div class="box__star">
+              <div class="box__star--svg">
+                  <div class="star__svg">
+                      <span>4.9 trên 5</span>
+                  </div>
+                  <div class="star__list">
+                      <ul>
+                          <li>
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0"
+                                      class="shopee-svg-icon shopee-rating-stars__primary-star icon-rating-solid">
+                                      <polygon
+                                          points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-miterlimit="10"></polygon>
+                                  </svg>
+                              </span>
+                          </li>
+                          <li>
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0"
+                                      class="shopee-svg-icon shopee-rating-stars__primary-star icon-rating-solid">
+                                      <polygon
+                                          points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-miterlimit="10"></polygon>
+                                  </svg>
+                              </span>
+                          </li>
+                          <li>
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0"
+                                      class="shopee-svg-icon shopee-rating-stars__primary-star icon-rating-solid">
+                                      <polygon
+                                          points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-miterlimit="10"></polygon>
+                                  </svg>
+                              </span>
+                          </li>
+                          <li>
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0"
+                                      class="shopee-svg-icon shopee-rating-stars__primary-star icon-rating-solid">
+                                      <polygon
+                                          points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-miterlimit="10"></polygon>
+                                  </svg>
+                              </span>
+                          </li>
+                          <li>
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0"
+                                      class="shopee-svg-icon shopee-rating-stars__primary-star icon-rating-solid">
+                                      <polygon
+                                          points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-miterlimit="10"></polygon>
+                                  </svg>
+                              </span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="box__star--list">
+                  <ul>
+                      <li class="item-overview active">
+                          <div class="overview">
+                              <span class="title">Tất cả</span>
+                          </div>
+                      </li>
+                      <li class="item-overview">
+                          <div class="overview">
+                              <span class="title">5 sao</span>
+                              <span class="total">(3.4k)</span>
+                          </div>
+                      </li>
+                      <li class="item-overview">
+                          <div class="overview">
+                              <span class="title">4 sao</span>
+                              <span class="total">(2.1k)</span>
+                          </div>
+                      </li>
+                      <li class="item-overview">
+                          <div class="overview">
+                              <span class="title">4 sao</span>
+                              <span class="total">(6000)</span>
+                          </div>
+                      </li>
+                      <li class="item-overview">
+                          <div class="overview">
+                              <span class="title">2 sao</span>
+                              <span class="total">(2)</span>
+                          </div>
+                      </li>
+                      <li class="item-overview">
+                          <div class="overview">
+                              <span class="title">1 sao</span>
+                              <span class="total">(7)</span>
+                          </div>
+                      </li>
+                      <li class="item-overview">
+                          <div class="overview">
+                              <span class="title">Có bình luận</span>
+                              <span class="total">(144k)</span>
+                          </div>
+                      </li>
+                      <li class="item-overview">
+                          <div class="overview">
+                              <span class="title">Có hình ảnh/video</span>
+                              <span class="total">(112k)</span>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          <div class="product__comment--list">
+              <div class="product__comment--item">
+                  <div class="product__comment--item-avatar">
+                      <a href="#">
+                          <div class="avatar">
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0" class="shopee-svg-icon icon-headshot">
+                                      <g>
+                                          <circle cx="7.5" cy="4.5" fill="none" r="3.8"
+                                              stroke-miterlimit="10"></circle>
+                                          <path d="m1.5 14.2c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none"
+                                              stroke-linecap="round" stroke-miterlimit="10"></path>
+                                      </g>
+                                  </svg>
+                              </span>
+                          </div>
+                      </a>
+                  </div>
+                  <div class="product__comment--item-main">
+                      <div class="author__name">
+                          <a href="#">Lý Tiểu Long</a>
+                      </div>
+                      <div class="author__star">
+                          <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg>
+                      </div>
+                      <div class="author__time">
+                          <p>2022-11-27 12:53 | Phân loại hàng: Đen chất dày,Xl (43cm)</p>
+                      </div>
+                      <div class="author__content">
+                          <p>Balo đẹp lắm ý ạ
+                              Săn đc giá rẻ nữa nên mk rất vui
+                              Balo to cầm chắc và đầm tay
+                              Có rất nhiều ngăn ko đếm xuể
+                              Đg may chắc chắn và đẹp
+                              Còn đc móc khoá xinh nữa
+                              Mk rất vui và sẽ ủng hộ shop lần mua tới ạ💅🏼
+                              Mãi keo💅🏼💅🏼</p>
+                      </div>
+                      <div class="product__comment--item-reply">
+                          <div class="title">
+                              <p>Phản hổi của người bán</p>
+                          </div>
+                          <div class="content">
+                              <p>hihi cảm ơn bạn đã chim ưng và bớt chút thời gian đánh giá lại sản
+                                  phẩm
+                                  bên shop ạ 😘😘😘 Chúc bạn luôn vui vẻ và học tập làm việc hiệu quả
+                                  nhé
+                                  😜. Đặc biệt là có những bức hình xinh xẻo, hịn hò cùng em balo này
+                                  nha
+                                  🙆🙆🙆</p>
+                          </div>
+                      </div>
+                      <div class="auth__like">
+                          <div class="icon">
+                              <button class="btnCommentLike">
+                                  <span class="svg">
+                                      <svg width="14px" height="13px" viewBox="0 0 14 13"
+                                          version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                          <defs></defs>
+                                          <g stroke="none" stroke-width="1" fill-rule="evenodd">
+                                              <g id="Product-Ratings-Working"
+                                                  transform="translate(-245.000000, -855.000000)"
+                                                  fill-rule="nonzero">
+                                                  <g transform="translate(155.000000, 92.000000)">
+                                                      <g transform="translate(40.000000, 184.000000)">
+                                                          <g
+                                                              transform="translate(0.000000, 326.000000)">
+                                                              <g
+                                                                  transform="translate(50.000000, 253.000000)">
+                                                                  <g>
+                                                                      <path
+                                                                          d="M0,12.7272727 L2.54545455,12.7272727 L2.54545455,5.09090909 L0,5.09090909 L0,12.7272727 Z M14,5.72727273 C14,5.02727273 13.4272727,4.45454545 12.7272727,4.45454545 L8.71818182,4.45454545 L9.35454545,1.52727273 L9.35454545,1.33636364 C9.35454545,1.08181818 9.22727273,0.827272727 9.1,0.636363636 L8.4,0 L4.2,4.2 C3.94545455,4.39090909 3.81818182,4.70909091 3.81818182,5.09090909 L3.81818182,11.4545455 C3.81818182,12.1545455 4.39090909,12.7272727 5.09090909,12.7272727 L10.8181818,12.7272727 C11.3272727,12.7272727 11.7727273,12.4090909 11.9636364,11.9636364 L13.8727273,7.44545455 C13.9363636,7.31818182 13.9363636,7.12727273 13.9363636,7 L13.9363636,5.72727273 L14,5.72727273 C14,5.79090909 14,5.72727273 14,5.72727273 Z">
+                                                                      </path>
+                                                                  </g>
+                                                              </g>
+                                                          </g>
+                                                      </g>
+                                                  </g>
+                                              </g>
+                                          </g>
+                                      </svg>
+                                  </span>
+                              </button>
+                          </div>
+                          <div class="total">
+                              23
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="product__comment--item">
+                  <div class="product__comment--item-avatar">
+                      <a href="#">
+                          <div class="avatar">
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0" class="shopee-svg-icon icon-headshot">
+                                      <g>
+                                          <circle cx="7.5" cy="4.5" fill="none" r="3.8"
+                                              stroke-miterlimit="10"></circle>
+                                          <path d="m1.5 14.2c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none"
+                                              stroke-linecap="round" stroke-miterlimit="10"></path>
+                                      </g>
+                                  </svg>
+                              </span>
+                          </div>
+                      </a>
+                  </div>
+                  <div class="product__comment--item-main">
+                      <div class="author__name">
+                          <a href="#">Nguyễn Bá Long</a>
+                      </div>
+                      <div class="author__star">
+                          <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg>
+                      </div>
+                      <div class="author__time">
+                          <p>2022-11-27 12:53 | Phân loại hàng: Đen chất dày,Xl (43cm)</p>
+                      </div>
+                      <div class="author__content">
+                          <p>Balo đẹp lắm ý ạ
+                              Săn đc giá rẻ nữa nên mk rất vui
+                              Balo to cầm chắc và đầm tay
+                              Có rất nhiều ngăn ko đếm xuể
+                              Đg may chắc chắn và đẹp
+                              Còn đc móc khoá xinh nữa
+                              Mk rất vui và sẽ ủng hộ shop lần mua tới ạ💅🏼
+                              Mãi keo💅🏼💅🏼</p>
+                      </div>
+                      <div class="product__comment--item-reply">
+                          <div class="title">
+                              <p>Phản hổi của người bán</p>
+                          </div>
+                          <div class="content">
+                              <p>hihi cảm ơn bạn đã chim ưng và bớt chút thời gian đánh giá lại sản
+                                  phẩm
+                                  bên shop ạ 😘😘😘 Chúc bạn luôn vui vẻ và học tập làm việc hiệu quả
+                                  nhé
+                                  😜. Đặc biệt là có những bức hình xinh xẻo, hịn hò cùng em balo này
+                                  nha
+                                  🙆🙆🙆</p>
+                          </div>
+                      </div>
+                      <div class="auth__like">
+                          <div class="icon">
+                              <button class="btnCommentLike">
+                                  <span class="svg">
+                                      <svg width="14px" height="13px" viewBox="0 0 14 13"
+                                          version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                          <defs></defs>
+                                          <g stroke="none" stroke-width="1" fill-rule="evenodd">
+                                              <g id="Product-Ratings-Working"
+                                                  transform="translate(-245.000000, -855.000000)"
+                                                  fill-rule="nonzero">
+                                                  <g transform="translate(155.000000, 92.000000)">
+                                                      <g transform="translate(40.000000, 184.000000)">
+                                                          <g
+                                                              transform="translate(0.000000, 326.000000)">
+                                                              <g
+                                                                  transform="translate(50.000000, 253.000000)">
+                                                                  <g>
+                                                                      <path
+                                                                          d="M0,12.7272727 L2.54545455,12.7272727 L2.54545455,5.09090909 L0,5.09090909 L0,12.7272727 Z M14,5.72727273 C14,5.02727273 13.4272727,4.45454545 12.7272727,4.45454545 L8.71818182,4.45454545 L9.35454545,1.52727273 L9.35454545,1.33636364 C9.35454545,1.08181818 9.22727273,0.827272727 9.1,0.636363636 L8.4,0 L4.2,4.2 C3.94545455,4.39090909 3.81818182,4.70909091 3.81818182,5.09090909 L3.81818182,11.4545455 C3.81818182,12.1545455 4.39090909,12.7272727 5.09090909,12.7272727 L10.8181818,12.7272727 C11.3272727,12.7272727 11.7727273,12.4090909 11.9636364,11.9636364 L13.8727273,7.44545455 C13.9363636,7.31818182 13.9363636,7.12727273 13.9363636,7 L13.9363636,5.72727273 L14,5.72727273 C14,5.79090909 14,5.72727273 14,5.72727273 Z">
+                                                                      </path>
+                                                                  </g>
+                                                              </g>
+                                                          </g>
+                                                      </g>
+                                                  </g>
+                                              </g>
+                                          </g>
+                                      </svg>
+                                  </span>
+                              </button>
+
+                          </div>
+                          <div class="total">
+                              18
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="product__comment--item">
+                  <div class="product__comment--item-avatar">
+                      <a href="#">
+                          <div class="avatar">
+                              <span class="svg">
+                                  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
+                                      y="0" class="shopee-svg-icon icon-headshot">
+                                      <g>
+                                          <circle cx="7.5" cy="4.5" fill="none" r="3.8"
+                                              stroke-miterlimit="10"></circle>
+                                          <path d="m1.5 14.2c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none"
+                                              stroke-linecap="round" stroke-miterlimit="10"></path>
+                                      </g>
+                                  </svg>
+                              </span>
+                          </div>
+                      </a>
+                  </div>
+                  <div class="product__comment--item-main">
+                      <div class="author__name">
+                          <a href="#">David Mach</a>
+                      </div>
+                      <div class="author__star">
+                          <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg><svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+                              class="shopee-svg-icon icon-rating-solid--active icon-rating-solid">
+                              <polygon
+                                  points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-miterlimit="10"></polygon>
+                          </svg>
+                      </div>
+                      <div class="author__time">
+                          <p>2022-11-27 12:53 | Phân loại hàng: Đen chất dày,Xl (43cm)</p>
+                      </div>
+                      <div class="author__content">
+                          <p>Balo đẹp lắm ý ạ
+                              Săn đc giá rẻ nữa nên mk rất vui
+                              Balo to cầm chắc và đầm tay
+                              Có rất nhiều ngăn ko đếm xuể
+                              Đg may chắc chắn và đẹp
+                              Còn đc móc khoá xinh nữa
+                              Mk rất vui và sẽ ủng hộ shop lần mua tới ạ💅🏼
+                              Mãi keo💅🏼💅🏼</p>
+                      </div>
+                      <div class="product__comment--item-reply">
+                          <div class="title">
+                              <p>Phản hổi của người bán</p>
+                          </div>
+                          <div class="content">
+                              <p>hihi cảm ơn bạn đã chim ưng và bớt chút thời gian đánh giá lại sản
+                                  phẩm
+                                  bên shop ạ 😘😘😘 Chúc bạn luôn vui vẻ và học tập làm việc hiệu quả
+                                  nhé
+                                  😜. Đặc biệt là có những bức hình xinh xẻo, hịn hò cùng em balo này
+                                  nha
+                                  🙆🙆🙆</p>
+                          </div>
+                      </div>
+                      <div class="auth__like">
+                          <div class="icon">
+                              <button class="btnCommentLike">
+                                  <span class="svg">
+                                      <svg width="14px" height="13px" viewBox="0 0 14 13"
+                                          version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                          <defs></defs>
+                                          <g stroke="none" stroke-width="1" fill-rule="evenodd">
+                                              <g id="Product-Ratings-Working"
+                                                  transform="translate(-245.000000, -855.000000)"
+                                                  fill-rule="nonzero">
+                                                  <g transform="translate(155.000000, 92.000000)">
+                                                      <g transform="translate(40.000000, 184.000000)">
+                                                          <g
+                                                              transform="translate(0.000000, 326.000000)">
+                                                              <g
+                                                                  transform="translate(50.000000, 253.000000)">
+                                                                  <g>
+                                                                      <path
+                                                                          d="M0,12.7272727 L2.54545455,12.7272727 L2.54545455,5.09090909 L0,5.09090909 L0,12.7272727 Z M14,5.72727273 C14,5.02727273 13.4272727,4.45454545 12.7272727,4.45454545 L8.71818182,4.45454545 L9.35454545,1.52727273 L9.35454545,1.33636364 C9.35454545,1.08181818 9.22727273,0.827272727 9.1,0.636363636 L8.4,0 L4.2,4.2 C3.94545455,4.39090909 3.81818182,4.70909091 3.81818182,5.09090909 L3.81818182,11.4545455 C3.81818182,12.1545455 4.39090909,12.7272727 5.09090909,12.7272727 L10.8181818,12.7272727 C11.3272727,12.7272727 11.7727273,12.4090909 11.9636364,11.9636364 L13.8727273,7.44545455 C13.9363636,7.31818182 13.9363636,7.12727273 13.9363636,7 L13.9363636,5.72727273 L14,5.72727273 C14,5.79090909 14,5.72727273 14,5.72727273 Z">
+                                                                      </path>
+                                                                  </g>
+                                                              </g>
+                                                          </g>
+                                                      </g>
+                                                  </g>
+                                              </g>
+                                          </g>
+                                      </svg>
+                                  </span>
+                              </button>
+
+                          </div>
+                          <div class="total">
+                              9
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="product__relationship">
+      <div class="heading">
+          <h3>Sản phẩm tương tự</h3>
+      </div>
+      <div class="product__grid">
+          <div class="product__item border">
+              <div class="product__item--thumb">
+                  <a href="">
+                      <picture class="webpimg-container">
+                          <source type="image/webp"
+                              srcset="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg">
+                          <img src="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg"
+                              alt="Điện thoại Samsung Galaxy Z Flip 4 (8GB/128GB) - Hàng chính hãng">
+                      </picture>
+                  </a>
+                  <div class="discount">-22%</div>
+
+              </div>
+              <div class="product__item--info">
+                  <div class="product_price">
+                      <div class="sale_price">150.000<sup>đ</sup></div>
+                      <div class="regular_price">7.330.000<sup>₫</sup></div>
+                  </div>
+                  <h3 class="name">
+                      <a href="#">
+                          Điện Thoại Samsung Galaxy S20 FE (8GB/256GB) - Hàng Chính Hãng - Đã kích
+                          hoạt bảo hành điện tử
+                      </a>
+                  </h3>
+                  <div class="star">
+                      <div class="list-star">
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <span class="total_buy">(156 lượt bán)</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="product__item border">
+              <div class="product__item--thumb">
+                  <a href="">
+                      <picture class="webpimg-container">
+                          <source type="image/webp"
+                              srcset="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg">
+                          <img src="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg"
+                              alt="Điện thoại Samsung Galaxy Z Flip 4 (8GB/128GB) - Hàng chính hãng">
+                      </picture>
+                  </a>
+                  <div class="discount">-22%</div>
+
+              </div>
+              <div class="product__item--info">
+                  <div class="product_price">
+                      <div class="sale_price">150.000<sup>đ</sup></div>
+                      <div class="regular_price">7.330.000<sup>₫</sup></div>
+                  </div>
+                  <h3 class="name">
+                      <a href="#">
+                          Điện Thoại Samsung Galaxy S20 FE (8GB/256GB) - Hàng Chính Hãng - Đã kích
+                          hoạt bảo hành điện tử
+                      </a>
+                  </h3>
+                  <div class="star">
+                      <div class="list-star">
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <span class="total_buy">(156 lượt bán)</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="product__item border">
+              <div class="product__item--thumb">
+                  <a href="">
+                      <picture class="webpimg-container">
+                          <source type="image/webp"
+                              srcset="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg">
+                          <img src="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg"
+                              alt="Điện thoại Samsung Galaxy Z Flip 4 (8GB/128GB) - Hàng chính hãng">
+                      </picture>
+                  </a>
+                  <div class="discount">-22%</div>
+
+              </div>
+              <div class="product__item--info">
+                  <div class="product_price">
+                      <div class="sale_price">150.000<sup>đ</sup></div>
+                      <div class="regular_price">7.330.000<sup>₫</sup></div>
+                  </div>
+                  <h3 class="name">
+                      <a href="#">
+                          Điện Thoại Samsung Galaxy S20 FE (8GB/256GB) - Hàng Chính Hãng - Đã kích
+                          hoạt bảo hành điện tử
+                      </a>
+                  </h3>
+                  <div class="star">
+                      <div class="list-star">
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <span class="total_buy">(156 lượt bán)</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="product__item border">
+              <div class="product__item--thumb">
+                  <a href="">
+                      <picture class="webpimg-container">
+                          <source type="image/webp"
+                              srcset="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg">
+                          <img src="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg"
+                              alt="Điện thoại Samsung Galaxy Z Flip 4 (8GB/128GB) - Hàng chính hãng">
+                      </picture>
+                  </a>
+                  <div class="discount">-22%</div>
+              </div>
+              <div class="product__item--info">
+                  <div class="product_price">
+                      <div class="sale_price">150.000<sup>đ</sup></div>
+                      <div class="regular_price">7.330.000<sup>₫</sup></div>
+                  </div>
+                  <h3 class="name">
+                      <a href="#">
+                          Điện Thoại Samsung Galaxy S20 FE (8GB/256GB) - Hàng Chính Hãng - Đã kích
+                          hoạt bảo hành điện tử
+                      </a>
+                  </h3>
+                  <div class="star">
+                      <div class="list-star">
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <span class="total_buy">(156 lượt bán)</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="product__item border">
+              <div class="product__item--thumb">
+                  <a href="">
+                      <picture class="webpimg-container">
+                          <source type="image/webp"
+                              srcset="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg">
+                          <img src="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg"
+                              alt="Điện thoại Samsung Galaxy Z Flip 4 (8GB/128GB) - Hàng chính hãng">
+                      </picture>
+                  </a>
+                  <div class="discount">-22%</div>
+
+              </div>
+              <div class="product__item--info">
+                  <div class="product_price">
+                      <div class="sale_price">150.000<sup>đ</sup></div>
+                      <div class="regular_price">7.330.000<sup>₫</sup></div>
+                  </div>
+                  <h3 class="name">
+                      <a href="#">
+                          Điện Thoại Samsung Galaxy S20 FE (8GB/256GB) - Hàng Chính Hãng - Đã kích
+                          hoạt bảo hành điện tử
+                      </a>
+                  </h3>
+                  <div class="star">
+                      <div class="list-star">
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <span class="total_buy">(156 lượt bán)</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="product__item border">
+              <div class="product__item--thumb">
+                  <a href="">
+                      <picture class="webpimg-container">
+                          <source type="image/webp"
+                              srcset="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg">
+                          <img src="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg"
+                              alt="Điện thoại Samsung Galaxy Z Flip 4 (8GB/128GB) - Hàng chính hãng">
+                      </picture>
+                  </a>
+                  <div class="discount">-22%</div>
+
+              </div>
+              <div class="product__item--info">
+                  <div class="product_price">
+                      <div class="sale_price">150.000<sup>đ</sup></div>
+                      <div class="regular_price">7.330.000<sup>₫</sup></div>
+                  </div>
+                  <h3 class="name">
+                      <a href="#">
+                          Điện Thoại Samsung Galaxy S20 FE (8GB/256GB) - Hàng Chính Hãng - Đã kích
+                          hoạt bảo hành điện tử
+                      </a>
+                  </h3>
+                  <div class="star">
+                      <div class="list-star">
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <span class="total_buy">(156 lượt bán)</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="product__item border">
+              <div class="product__item--thumb">
+                  <a href="">
+                      <picture class="webpimg-container">
+                          <source type="image/webp"
+                              srcset="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg">
+                          <img src="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg"
+                              alt="Điện thoại Samsung Galaxy Z Flip 4 (8GB/128GB) - Hàng chính hãng">
+                      </picture>
+                  </a>
+                  <div class="discount">-22%</div>
+
+              </div>
+              <div class="product__item--info">
+                  <div class="product_price">
+                      <div class="sale_price">150.000<sup>đ</sup></div>
+                      <div class="regular_price">7.330.000<sup>₫</sup></div>
+                  </div>
+                  <h3 class="name">
+                      <a href="#">
+                          Điện Thoại Samsung Galaxy S20 FE (8GB/256GB) - Hàng Chính Hãng - Đã kích
+                          hoạt bảo hành điện tử
+                      </a>
+                  </h3>
+                  <div class="star">
+                      <div class="list-star">
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <span class="total_buy">(156 lượt bán)</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="product__item border">
+              <div class="product__item--thumb">
+                  <a href="#">
+                      <picture class="webpimg-container">
+                          <source type="image/webp"
+                              srcset="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg">
+                          <img src="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg"
+                              alt="Điện thoại Samsung Galaxy Z Flip 4 (8GB/128GB) - Hàng chính hãng">
+                      </picture>
+                  </a>
+                  <div class="discount">-22%</div>
+              </div>
+              <div class="product__item--info">
+                  <div class="product_price">
+                      <div class="sale_price">150.000<sup>đ</sup></div>
+                      <div class="regular_price">7.330.000<sup>₫</sup></div>
+                  </div>
+                  <h3 class="name">
+                      <a href="#">
+                          Điện Thoại Samsung Galaxy S20 FE (8GB/256GB) - Hàng Chính Hãng - Đã kích
+                          hoạt bảo hành điện tử
+                      </a>
+                  </h3>
+                  <div class="star">
+                      <div class="list-star">
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <span class="total_buy">(156 lượt bán)</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="product__item border">
+              <div class="product__item--thumb">
+                  <a href="">
+                      <picture class="webpimg-container">
+                          <source type="image/webp"
+                              srcset="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg">
+                          <img src="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg"
+                              alt="Điện thoại Samsung Galaxy Z Flip 4 (8GB/128GB) - Hàng chính hãng">
+                      </picture>
+                  </a>
+                  <div class="discount">-22%</div>
+
+              </div>
+              <div class="product__item--info">
+                  <div class="product_price">
+                      <div class="sale_price">150.000<sup>đ</sup></div>
+                      <div class="regular_price">7.330.000<sup>₫</sup></div>
+                  </div>
+                  <h3 class="name">
+                      <a href="#">
+                          Điện Thoại Samsung Galaxy S20 FE (8GB/256GB) - Hàng Chính Hãng - Đã kích
+                          hoạt bảo hành điện tử
+                      </a>
+                  </h3>
+                  <div class="star">
+                      <div class="list-star">
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <span class="total_buy">(156 lượt bán)</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="product__item border">
+              <div class="product__item--thumb">
+                  <a href="">
+                      <picture class="webpimg-container">
+                          <source type="image/webp"
+                              srcset="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg">
+                          <img src="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg"
+                              alt="Điện thoại Samsung Galaxy Z Flip 4 (8GB/128GB) - Hàng chính hãng">
+                      </picture>
+                  </a>
+                  <div class="discount">-22%</div>
+
+              </div>
+              <div class="product__item--info">
+                  <div class="product_price">
+                      <div class="sale_price">150.000<sup>đ</sup></div>
+                      <div class="regular_price">7.330.000<sup>₫</sup></div>
+                  </div>
+                  <h3 class="name">
+                      <a href="#">
+                          Điện Thoại Samsung Galaxy S20 FE (8GB/256GB) - Hàng Chính Hãng - Đã kích
+                          hoạt bảo hành điện tử
+                      </a>
+                  </h3>
+                  <div class="star">
+                      <div class="list-star">
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <i class="star"></i>
+                          <span class="total_buy">(156 lượt bán)</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

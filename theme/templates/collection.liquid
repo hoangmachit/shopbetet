@@ -1,18 +1,160 @@
-{% paginate collection.products by 2 %}
-  <h1>{{ collection.title }}</h1>
-  {% for product in collection.products %}
-    <div>
-      <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-      {{ product.price | money }}
-      {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-      <a href="{{ product.url | within: collection }}">
-        <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+<div class="main__wrapper--left">
+  <div class="list__category--left">
+    <div class="heading">
+      <h2>Danh mục sản phẩm</h2>
+    </div>
+    <div class="category">
+      {% for collection in collections %}
+        <a href="{{ collection.url  }}" class="category__item">
+          <div class="icon">
+            {% if collection.image %}
+              <picture class="webpimg-container">
+                <source type="image/webp" srcset="{{ collection.featured_image | img_url }}">
+                <img
+                  src="{{ collection.featured_image | img_url }}"
+                  width="32"
+                  height="32"
+                  alt="{{ collection.title  }}">
+              </picture>
+            {% else %}
+              <picture class="webpimg-container">
+                <source type="image/webp" srcset="https://salt.tikicdn.com/cache/100x100/ts/category/75/34/29/d900f845e51e95a2c41b5b035468f959.png.webp">
+                <img
+                  src="https://salt.tikicdn.com/cache/100x100/ts/category/75/34/29/d900f845e51e95a2c41b5b035468f959.png.webp"
+                  width="32"
+                  height="32"
+                  alt="{{ collection.title  }}">
+              </picture>
+            {% endif %}
+          </div>
+          <h2 class="text">{{ collection.title }}</h2>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="main__wrapper--right">
+  <div class="bg-white main__product-favorite">
+    <div class="main__heading">
+      <h1 class="main__heading--title">{{ collection.title }}</h1>
+      <a href="/collections/san-pham-noi-bat">
+        Xem thêm
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-arrow-right"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+          </svg>
+        </span>
       </a>
     </div>
-  {% else %}
-    <p>no matches</p>
-  {% endfor %}
-  {% if paginate.pages > 1 %}
-    {{ paginate | default_pagination }}
-  {% endif %}
-{% endpaginate %}
+    {% paginate collection.products by 8 %}
+      <div class="main__product--wrapper">
+        <div class="product__grid">
+          {% for product in collection.products %}
+            <div class="product__item border">
+              <div class="product__item--thumb">
+                <a href="{{ product.url }}" title="{{ product.title }}">
+                  <picture class="webpimg-container">
+                    <source type="image/webp" srcset="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg">
+                    <img src="https://salt.tikicdn.com/cache/280x280/ts/product/6a/be/a4/eed46980c01c6332b513831e13dd14cf.jpg" alt="Điện thoại Samsung Galaxy Z Flip 4 (8GB/128GB) - Hàng chính hãng">
+                  </picture>
+                </a>
+                <div class="discount">-22%</div>
+              </div>
+              <div class="product__item--info">
+                <div class="product_price">
+                  <div class="sale_price">150.000<sup>đ</sup>
+                  </div>
+                  <div class="regular_price">7.330.000<sup>₫</sup>
+                  </div>
+                </div>
+                <h3 class="name">
+                  <a href="{{ product.url }}" title="{{ product.title }}">
+                    {{ product.title }}
+                  </a>
+                </h3>
+                <div class="star">
+                  <div class="list-star">
+                    <i class="star"></i>
+                    <i class="star"></i>
+                    <i class="star"></i>
+                    <i class="star"></i>
+                    <i class="star"></i>
+                    <span class="total_buy">(156 lượt bán)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="prodict__paginate">
+          {%- if paginate.pages > 1 -%}
+            <nav role="navigation">
+              <ol class="pagination">
+                {%- if paginate.previous -%}
+                  <li>
+                    <a href="{{ paginate.previous.url }}">
+                      <span aria-hidden="true">&laquo;</span>
+                      Previous
+                      <span class="visuallyhidden">page</span>
+                    </a>
+                  </li>
+                {%- else -%}
+                  <li class="disabled">
+                    <span aria-hidden="true">&laquo;</span>
+                    Previous
+                    <span class="visuallyhidden">page</span>
+                  </li>
+                {%- endif -%}
+
+                {%- for part in paginate.parts -%}
+                  {%- if part.is_link -%}
+                    <li>
+                      <a href="{{ part.url }}">
+                        <span class="visuallyhidden">page</span>
+                        {{ part.title }}
+                      </a>
+                    </li>
+                  {%- else -%}
+                    {%- if part.title == paginate.current_page -%}
+                      <li class="active" aria-current="page">
+                        <span class="visuallyhidden">page</span>
+                        {{ part.title }}
+                      </li>
+                    {%- else -%}
+                      <li>
+                        <span class="visuallyhidden">page</span>
+                        {{ part.title }}
+                      </li>
+                    {%- endif -%}
+                  {%- endif -%}
+                {%- endfor -%}
+
+                {%- if paginate.next -%}
+                  <li>
+                    <a href="{{ paginate.next.url }}">
+                      Next
+                      <span class="visuallyhidden">page</span>
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                {%- else -%}
+                  <li class="disabled">
+                    Next
+                    <span class="visuallyhidden">page</span>
+                    <span aria-hidden="true">&raquo;</span>
+                  </li>
+                {%- endif -%}
+              </ol>
+            </nav>
+          {%- endif -%}
+        </div>
+      </div>
+    {% endpaginate %}
+  </div>
+</div>
