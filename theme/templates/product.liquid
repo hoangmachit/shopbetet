@@ -282,14 +282,14 @@
                   <button class="btn btn-addcart" type="submit" name="add" id="btn-addcart">
                       <p class="txt">MUA NGAY</p>
                   </button>
-                  <span class="btn btn-spmarket">Thêm vào giỏ hàng</span>
+                  <span class="btn btn-spmarket" id="btnAddToCart">Thêm vào giỏ hàng</span>
               </div>
               <div class="product__form--submit">
-                <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" style="display: none;">
-                    <input type="hidden" name="form_type" value="product">
-                    <input type="hidden" name="utf8" value="✓">
-                    <input type="hidden" name="id" value="">
-                    <input type="hidden" id="Quantity" name="quantity" value="1" min="1">
+                <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+                    <input type="text" name="form_type" value="product">
+                    <input type="text" name="utf8" value="✓">
+                    <input type="text" name="id" value="">
+                    <input type="text" id="Quantity" name="quantity" value="1" min="1">
                     <button type="submit" name="add" id="AddToCart">Add to cart</button>
                 </form>
               </div>

@@ -144,39 +144,27 @@ $(document).ready(function () {
         qty.val(value);
         quantity.val(value);
     });
+
+    // 
+    const variant = getActiveVariant();
+    disabledButtonAddToCart(variant);
+    addDataForFormAddToCart(variant);
+    renderDataProduct(variant);
     $('body').on('change', '.variant_radio', function (e) {
         e.preventDefault();
-        let jsonData = $('#productVariants').text();
-        let dataJson = JSON.parse(jsonData);
-        var checkedRadioValues = {};
-        var variantRadio = $('.variant_radio');
-        var selectedOptions = {};
-        variantRadio.each(function (index, element) {
-            const _this = $(element);
-            if (_this.is(":checked")) {
-                var radioButtonName = _this.attr('name');
-                var radioButtonValue = _this.val();
-                selectedOptions[radioButtonName] = radioButtonValue;
-            }
-        });
-        dataJson.forEach(function (item) {
-            var isMatching = true;
-            for (var key in selectedOptions) {
-                if (!item.options.includes(selectedOptions[key])) {
-                    isMatching = false;
-                    break;
-                }
-            }
-            if (isMatching) {
-                checkedRadioValues = item;
-            }
-        });
-        $('input[name="id"]').val(checkedRadioValues.id);
+        const variant = getActiveVariant();
+        disabledButtonAddToCart(variant);
+        addDataForFormAddToCart(variant);
+        renderDataProduct(variant);
     });
     $('body').on('click', '#btn-addcart', function (e) {
         e.preventDefault();
         const formCart = $('#AddToCartForm');
         formCart.submit();
+    });
+    $('body').on('click', '#btnAddToCart', function (e) {
+        e.preventDefault();
+        console.log(1);
     });
 });
 
