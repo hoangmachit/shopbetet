@@ -1,28 +1,135 @@
-<!-- /templates/customers/login.liquid -->
-
-<h2>Login</h2>
-{% form 'customer_login' %}
-
-{{ form.errors | default_errors }}
-
-<label for="customer_email">Email Address</label>
-<input type="email" name="customer[email]" />
-
-<label for="customer_password">Password</label>
-<input type="password" name="customer[password]" />
-
-<input type="submit" value="Sign In" />
-
-{% endform %}
-
-<h2>Forgot Password</h2>
-{% form 'recover_customer_password' %}
-
-{{ form.errors | default_errors }}
-
-<label for="customer_email">Email Address</label>
-<input type="email" name="email" />
-
-<input type="submit" value="Submit" />
-
-{% endform %}
+<div id="recover" class="page__login">
+  <nav class="main__breadcumb" aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Trang chủ</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="/account">Tài khoản</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Đăng nhập</li>
+    </ol>
+  </nav>
+  <div class="page__login--form">
+    <div class="wrapper__form">
+      {% form 'customer_login' %}
+        <div class="page__login--heading">
+          <h1>Đăng nhập tài khoản</h1>
+        </div>
+        {{ form.errors | default_errors }}
+        <div class="c-form">
+          <label for="customer_email" class="c-label">Email</label>
+          <input
+            type="text"
+            class="c-control"
+            placeholder="your_email@gmail.com"
+            name="customer[email]"
+            id="customer_email" />
+        </div>
+        <div class="c-form">
+          <label for="customer_password" class="c-label">Mật khẩu</label>
+          <input
+            type="password"
+            class="c-control"
+            placeholder="******"
+            name="customer[password]"
+            id="customer_password" />
+        </div>
+        <div class="c-remember-forgot">
+          <div class="c-remember">
+            <input
+              type="checkbox"
+              id="remember"
+              value="1">
+            <label for="remember">Nhớ mật khẩu</label>
+          </div>
+          <div class="c-forgot">
+            <a href="/account/login#recover">Quên mật khẩu</a>
+          </div>
+        </div>
+        <div class="c-form">
+          <button class="btn btnLogin" type="submit">
+            Đăng nhập tài khoản
+          </button>
+        </div>
+        <div class="c-register">
+          <p>Đăng ký tài khoản mới</p>
+          <a href="/account/register">tại đây.</a>
+        </div>
+      {% endform %}
+      <div class="formLoginSocial">
+        <div class="formLoginSocial__heading">
+          <h3 class="formLoginSocial__heading--title">Đăng nhập bằng tài khoản khác</h3>
+        </div>
+        <div class="formLoginSocial__list">
+          <ul>
+            <li>
+              <form
+                action="#"
+                method="POST"
+                role="form">
+                <button
+                  type="submit"
+                  class="btn__social"
+                  disabled><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzciIGhlaWdodD0iMjciIHZpZXdCb3g9IjAgMCAzNyAyNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI3LjI1IDEzLjNDMjcuMjUgOC40Njc1MSAyMy4zMzI1IDQuNTUgMTguNSA0LjU1QzEzLjY2NzUgNC41NSA5Ljc1IDguNDY3NTEgOS43NSAxMy4zQzkuNzUgMTcuNjY3MyAxMi45NDk3IDIxLjI4NzMgMTcuMTMyOCAyMS45NDM3VjE1LjgyOTNIMTQuOTExMVYxMy4zSDE3LjEzMjhWMTEuMzcyM0MxNy4xMzI4IDkuMTc5MyAxOC40MzkyIDcuOTY3OTcgMjAuNDM3OCA3Ljk2Nzk3QzIxLjM5NTIgNy45Njc5NyAyMi4zOTY1IDguMTM4ODcgMjIuMzk2NSA4LjEzODg3VjEwLjI5MjJIMjEuMjkzMkMyMC4yMDYzIDEwLjI5MjIgMTkuODY3MiAxMC45NjY3IDE5Ljg2NzIgMTEuNjU4N1YxMy4zSDIyLjI5MzlMMjEuOTA2IDE1LjgyOTNIMTkuODY3MlYyMS45NDM3QzI0LjA1MDMgMjEuMjg3MyAyNy4yNSAxNy42Njc1IDI3LjI1IDEzLjNaIiBmaWxsPSIjMTg3N0YyIi8+CjxwYXRoIGQ9Ik0yMS45MDYgMTUuODI5M0wyMi4yOTM5IDEzLjNIMTkuODY3MlYxMS42NTg3QzE5Ljg2NzIgMTAuOTY2NyAyMC4yMDYzIDEwLjI5MjIgMjEuMjkzMiAxMC4yOTIySDIyLjM5NjVWOC4xMzg4N0MyMi4zOTY1IDguMTM4ODcgMjEuMzk1MiA3Ljk2Nzk3IDIwLjQzNzggNy45Njc5N0MxOC40MzkyIDcuOTY3OTcgMTcuMTMyOCA5LjE3OTMgMTcuMTMyOCAxMS4zNzIzVjEzLjNIMTQuOTExMVYxNS44MjkzSDE3LjEzMjhWMjEuOTQzN0MxNy41NzgzIDIyLjAxMzYgMTguMDM0OCAyMi4wNSAxOC41IDIyLjA1QzE4Ljk2NTIgMjIuMDUgMTkuNDIxNyAyMi4wMTM2IDE5Ljg2NzIgMjEuOTQzN1YxNS44MjkzSDIxLjkwNloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=" alt="">Đăng nhập Google</button>
+              </form>
+            </li>
+            <li>
+              <form
+                action="#"
+                method="POST"
+                role="form">
+                <button
+                  type="submit"
+                  class="btn__social"
+                  disabled><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzciIGhlaWdodD0iMjciIHZpZXdCb3g9IjAgMCAzNyAyNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNi4xOCAxMy40ODE2QzI2LjE4IDEyLjkxNDQgMjYuMTI5MSAxMi4zNjg5IDI2LjAzNDUgMTEuODQ1M0gxOC41VjE0LjkzOThIMjIuODA1NUMyMi42MiAxNS45Mzk4IDIyLjA1NjQgMTYuNzg3MSAyMS4yMDkxIDE3LjM1NDRWMTkuMzYxNkgyMy43OTQ1QzI1LjMwNzMgMTcuOTY4OSAyNi4xOCAxNS45MTggMjYuMTggMTMuNDgxNloiIGZpbGw9IiM0Mjg1RjQiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOC41IDIxLjNDMjAuNjYgMjEuMyAyMi40NzEgMjAuNTgzNiAyMy43OTQ2IDE5LjM2MThMMjEuMjA5MSAxNy4zNTQ1QzIwLjQ5MjggMTcuODM0NSAxOS41NzY0IDE4LjExODIgMTguNSAxOC4xMTgyQzE2LjQxNjQgMTguMTE4MiAxNC42NTI4IDE2LjcxMDkgMTQuMDIzNyAxNC44MkgxMS4zNTFWMTYuODkyN0MxMi42NjczIDE5LjUwNzMgMTUuMzcyOCAyMS4zIDE4LjUgMjEuM1oiIGZpbGw9IiMzNEE4NTMiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNC4wMjM2IDE0LjgyMDFDMTMuODYzNiAxNC4zNDAxIDEzLjc3MjcgMTMuODI3NCAxMy43NzI3IDEzLjMwMDFDMTMuNzcyNyAxMi43NzI5IDEzLjg2MzYgMTIuMjYwMSAxNC4wMjM2IDExLjc4MDFWOS43MDc0MUgxMS4zNTA5QzEwLjgwOTEgMTAuNzg3NCAxMC41IDEyLjAwOTIgMTAuNSAxMy4zMDAxQzEwLjUgMTQuNTkxIDEwLjgwOTEgMTUuODEyOSAxMS4zNTA5IDE2Ljg5MjlMMTQuMDIzNiAxNC44MjAxWiIgZmlsbD0iI0ZCQkMwNSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE4LjUgOC40ODE4MkMxOS42NzQ2IDguNDgxODIgMjAuNzI5MSA4Ljg4NTQ2IDIxLjU1ODIgOS42NzgxOEwyMy44NTI4IDcuMzgzNjRDMjIuNDY3MyA2LjA5MjczIDIwLjY1NjQgNS4zIDE4LjUgNS4zQzE1LjM3MjggNS4zIDEyLjY2NzMgNy4wOTI3MyAxMS4zNTEgOS43MDcyOEwxNC4wMjM3IDExLjc4QzE0LjY1MjggOS44ODkwOSAxNi40MTY0IDguNDgxODIgMTguNSA4LjQ4MTgyWiIgZmlsbD0iI0VBNDMzNSIvPgo8L3N2Zz4K" alt="">Đăng nhập Facebook</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page__forgot">
+  <nav class="main__breadcumb" aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Trang chủ</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="/">Tài khoản</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Lấy lại mật khẩu</li>
+    </ol>
+  </nav>
+  <div class="page__forgot--form">
+    <div class="wrapper__form">
+      {% form 'recover_customer_password' %}
+        <div class="page__forgot--heading">
+          <h1>Lấy lại mật khẩu</h1>
+        </div>
+        {{ form.errors | default_errors }}
+        <div class="c-form">
+          <label for="email" class="c-label">Email</label>
+          <input
+            type="text"
+            class="c-control"
+            placeholder="your-email@gmail.com"
+            name="email"
+            id="email" />
+        </div>
+        <div class="c-form">
+          <button class="btn btnForgot" type="submit">
+            Xác nhận email
+          </button>
+        </div>
+        <div class="c-login">
+          <p>Đăng nhập tài khoản
+          </p>
+          <a href="/account/login">tại đây.</a>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>

@@ -144,12 +144,11 @@ $(document).ready(function () {
         qty.val(value);
         quantity.val(value);
     });
-
-    // 
-    const variant = getActiveVariant();
-    disabledButtonAddToCart(variant);
-    addDataForFormAddToCart(variant);
-    renderDataProduct(variant);
+    // first load page product
+    // const variant = getActiveVariant();
+    // disabledButtonAddToCart(variant);
+    // addDataForFormAddToCart(variant);
+    // renderDataProduct(variant);
     $('body').on('change', '.variant_radio', function (e) {
         e.preventDefault();
         const variant = getActiveVariant();
@@ -165,6 +164,11 @@ $(document).ready(function () {
     $('body').on('click', '#btnAddToCart', function (e) {
         e.preventDefault();
         console.log(1);
+    });
+    $('body').on('click', '.btnEditAddress', function (e) {
+        e.preventDefault();
+        const element = $(this).data('element');
+        $(element).toggleClass('active');
     });
 });
 

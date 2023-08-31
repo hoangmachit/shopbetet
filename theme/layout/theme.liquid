@@ -7,18 +7,10 @@
     <meta name="description" content="{{ page_description | escape }}">
     <link rel="canonical" href="{{ canonical_url }}">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <link rel="stylesheet"
-        href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet"
-        href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.theme.default.min.css">
-    <script src="https://code.jquery.com/jquery-3.7.0.js"
-        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-    <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js"></script>
+    {{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
+    {{ 'owl.theme.default.min.css' | asset_url | stylesheet_tag }}
+    {{ 'app.css' | asset_url | stylesheet_tag }}
     {{ content_for_header }}
-    <!-- Header hook for plugins -->
-    {{ 'application.css' | asset_url | stylesheet_tag }}
-    {{ 'functions.js' | asset_url | script_tag }}
-    
   </head>
   <body>
     <header class="header">
@@ -80,8 +72,8 @@
                         </div>
                     </div>
                     <div class="header__bottom--search">
-                        <form action="#" id="form-seach" method="GET" role="form">
-                            <input id="search" type="text" name="search" placeholder="Tìm sản phẩm, nhóm hàng ..." />
+                        <form action="/search" id="form-seach" method="GET" role="form">
+                            <input id="search" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Tìm sản phẩm, nhóm hàng ..." />
                             <button id="btnSearch" class="icon-search">
                                 <span class="svg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -111,42 +103,80 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="header__bottom--account">
-                            <div class="flex__user">
-                                <div class="flex__user--icon">
-                                    <span class="svg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
-                                            <path
-                                                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
-                                            <path
-                                                d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z" />
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="flex__user--text">
-                                    <a href="/account/login">Đăng nhập</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="header__bottom--account">
-                            <div class="flex__user">
-                                <div class="flex__user--icon">
-                                    <span class="svg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
-                                            <path
-                                                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
-                                            <path
-                                                d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z" />
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="flex__user--text">
-                                    <a href="/account/register">Đăng ký</a>
+                        {% if shop.customer_accounts_enabled %}
+                            {% if customer %}
+                            <div class="header__bottom--account">
+                                <div class="flex__user">
+                                    <div class="flex__user--icon">
+                                        <span class="svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                                                <path
+                                                    d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="flex__user--text">
+                                        <a href="/account">{{ customer.name  }}</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="header__bottom--account">
+                                <div class="flex__user">
+                                    <div class="flex__user--icon">
+                                        <span class="svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="flex__user--text">
+                                        <a href="/account/logout">Thoát</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="header__bottom--account">
+                                <div class="flex__user">
+                                    <div class="flex__user--icon">
+                                        <span class="svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                                                <path
+                                                    d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="flex__user--text">
+                                        <a href="/account/login">Đăng nhập</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header__bottom--account">
+                                <div class="flex__user">
+                                    <div class="flex__user--icon">
+                                        <span class="svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                                                <path
+                                                    d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="flex__user--text">
+                                        <a href="/account/register">Đăng ký</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endif %}
                         <div class="header__bottom--account">
                             <div class="flex__user">
                                 <div class="flex__user--icon">
@@ -242,30 +272,6 @@
             </nav>
         </div>
     </header>
-    {% comment %} {% for link in linklists.main-menu.links %}
-    {% assign child_list_handle = link.title | handleize %}
-    {% if linklists[child_list_handle].links != blank %}
-    <a href="{{ link.url }}">{{ link.title }}</a>
-    [{% for childlink in linklists[child_list_handle].links %}
-    <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-    {% endfor %}]
-    {% else %}
-    <a href="{{ link.url }}">{{ link.title }}</a>
-    {% endif %}
-    {% endfor %}
-
-    <a href="/cart">cart</a>
-
-    {% if shop.customer_accounts_enabled %}
-    {% if customer %}
-    <a href="/account">account</a>
-    {{ 'log out' | customer_logout_link }}
-    {% else %}
-    {{ 'log in ' | customer_login_link }}
-    {{ 'register' | customer_register_link }}
-    {% endif %}
-    {% endif %} {% endcomment %}
-
     <main class="main" role="main">
       <div class="c-container">
           <div class="main__wrapper">
@@ -274,6 +280,7 @@
       </div>
     </main>
     <footer class="footer">
+      {% if template.name == "index" %}
       <div class="footer__banner">
           <div class="c-container">
               <div class="footer__banner--wrapper">
@@ -388,6 +395,7 @@
               </div>
           </div>
       </div>
+      {% endif %}
       <div class="bg-white footer__info">
           <div class="c-container">
               <div class="footer__info--wrapper">
@@ -718,6 +726,9 @@
           </div>
       </div>
   </footer>
+  {{ 'jquery-3.7.0.js' | asset_url | script_tag }}
+  {{ 'owl.carousel.js' | asset_url | script_tag }}
+  {{ 'functions.js' | asset_url | script_tag }}
   {{ 'app.js' | asset_url | script_tag }}
   </body>
 </html>

@@ -1,39 +1,345 @@
-<!-- /templates/customers/addresses.liquid -->
-
-<h2>New Address</h2>
-{% form 'customer_address', customer.new_address %}
-
-{{ form.errors | default_errors }}
-
-<label for="first_name">First Name</label>
-<input type="text" value="" name="address[first_name]" size="30" />
-
-<label for="last_name">Last Name</label>
-<input type="text" value="" name="address[last_name]" size="30" />
-
-<label for="company">Company</label>
-<input type="text" value="" name="address[company]" />
-
-<label for="address1">Address 1</label>
-<input type="text" value="" name="address[address1]" />
-
-<label for="address2">Address 2</label>
-<input type="text" value="" name="address[address2]" />
-
-<label for="city">City</label>
-<input type="text" value="" name="address[city]" />
-
-<!-- See docs for @shopify/theme-addresses to support Country and Province -->
-<label for="country">Country</label>
-<select name="address[country]" /></select>
-
-<label for="province">Province</label>
-<select name="address[province]" /></select>
-
-<label for="zip">Zip/Post Code</label>
-<input type="text" value="" name="address[zip]" />
-
-<label for="phone">Phone Number</label>
-<input type="tel" value="" name="address[phone]" />
-
-{% endform %}
+<div class="customer__page">
+  <nav class="main__breadcumb" aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Trang chủ</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="/account">Tài khoản</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Địa chỉ nhận hàng</li>
+    </ol>
+  </nav>
+  <div class="customer__page--wrapper">
+    <div class="customer__sidebar">
+      <div class="customer__avatar"></div>
+      <ul class="customer__infomation">
+        <li>
+          <a href="/account">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-house-lock-fill"
+                viewBox="0 0 16 16">
+                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
+                <path d="m8 3.293 4.72 4.72a3 3 0 0 0-2.709 3.248A2 2 0 0 0 9 13v2H3.5A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z" />
+                <path d="M13 9a2 2 0 0 0-2 2v1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1v-1a2 2 0 0 0-2-2Zm0 1a1 1 0 0 1 1 1v1h-2v-1a1 1 0 0 1 1-1Z" />
+              </svg>
+            </div>
+            <div class="title">
+              Trang của tôi
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="thong-tin-ca-nhan.html">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-person-lines-fill"
+                viewBox="0 0 16 16">
+                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+              </svg>
+            </div>
+            <div class="title">
+              Thông tin cá nhân
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="mat-khau.html">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-key"
+                viewBox="0 0 16 16">
+                <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+              </svg>
+            </div>
+            <div class="title">
+              Mật khẩu
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="tai-khoan-ngan-hang.html">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-cash-coin"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z" />
+                <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z" />
+                <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z" />
+                <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
+              </svg>
+            </div>
+            <div class="title">
+              Tài khoản ngân hàng
+            </div>
+          </a>
+        </li>
+        <li class="active">
+          <a href="/account/addresses">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-geo-alt"
+                viewBox="0 0 16 16">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+              </svg>
+            </div>
+            <div class="title">
+              Địa chỉ nhận hàng
+            </div>
+          </a>
+        </li>
+      </ul>
+      <ul class="customer__order">
+        <li>
+          <a href="don-hang-cua-toi">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-shop-window"
+                viewBox="0 0 16 16">
+                <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zm2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5z" />
+              </svg>
+            </div>
+            <div class="title">
+              Đơn hàng của tôi
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="customer__right">
+      <div class="customer__heading">
+        <h2 class="customer__heading--title">Danh sách địa chỉ nhận hàng</h2>
+        <p class="customer__heading--sub">Tổng hợp tất cả địa chỉ giao hàng đã sử dụng của bạn tại Shopbetet.vn</p>
+      </div>
+      <div class="customer__content">
+        <ul class="customer__content--address">
+          {%- for address in customer.addresses -%}
+            <li class="address__item">
+              <div class="address__item--heading">
+                {%- if address == customer.default_address -%}
+                  <h2>{{ forloop.index }}. Địa chỉ mặc định khi giao hàng</h2>
+                {%- else -%}
+                  <h2>{{ forloop.index }}. Địa chỉ giao hàng</h2>
+                {%- endif -%}
+                <div class="address__item--action">
+                  <button class="btnEditAddress" data-element="#editAddress_{{ address.id }}">
+                    <span class="svg">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-pencil-square"
+                        viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                      </svg>
+                    </span>
+                  </button>
+                  <button class="btnDeleteAddress" data-id="{{ address.id }}">
+                    <span class="svg">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-trash3"
+                        viewBox="0 0 16 16">
+                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div class="address__item--content">
+                {{ address | format_address }}
+              </div>
+              <div class="address__edit" id="editAddress_{{ address.id }}">
+                <h3>Thay đổi địa chỉ</h3>
+                {%- form 'customer_address', address -%}
+                  <div class="c-customer">
+                    <div class="c-title">
+                      First name
+                    </div>
+                    <div class="c-content">
+                      <input
+                        id="AddressFirstName_{{ form.id }}"
+                        name="address[first_name]"
+                        value="{{ form.first_name }}"
+                        autocomplete="given-name"
+                        placeholder="First name" />
+                    </div>
+                  </div>
+                  <div class="c-customer">
+                    <div class="c-title">
+                      Last name
+                    </div>
+                    <div class="c-content">
+                      <input
+                        type="text"
+                        id="AddressLastName_{{ form.id }}"
+                        name="address[last_name]"
+                        value="{{ form.last_name }}"
+                        autocomplete="family-name"
+                        placeholder="Last name" />
+                    </div>
+                  </div>
+                  <div class="c-customer">
+                    <div class="c-title">
+                      Công ty
+                    </div>
+                    <div class="c-content">
+                      <input
+                        type="text"
+                        id="AddressCompany_{{ form.id }}"
+                        name="address[company]"
+                        value="{{ form.company }}"
+                        autocomplete="organization"
+                        placeholder="Company name">
+                    </div>
+                  </div>
+                  <div class="c-customer">
+                    <div class="c-title">
+                      Địa chỉ 1
+                    </div>
+                    <div class="c-content">
+                      <input
+                        type="text"
+                        id="AddressAddress1_{{ form.id }}"
+                        name="address[address1]"
+                        value="{{ form.address1 }}"
+                        autocomplete="address-line1"
+                        placeholder="Địa chỉ 1">
+                    </div>
+                  </div>
+                  <div class="c-customer">
+                    <div class="c-title">
+                      Địa chỉ 2
+                    </div>
+                    <div class="c-content">
+                      <input
+                        type="text"
+                        id="AddressAddress2_{{ form.id }}"
+                        name="address[address2]"
+                        value="{{ form.address2 }}"
+                        autocomplete="address-line2"
+                        placeholder="Địa chỉ 2">
+                    </div>
+                  </div>
+                  <div class="c-customer">
+                    <div class="c-title">
+                      Thành phố
+                    </div>
+                    <div class="c-content">
+                      <input
+                        type="text"
+                        id="AddressCity_{{ form.id }}"
+                        name="address[city]"
+                        value="{{ form.city }}"
+                        autocomplete="address-level2"
+                        placeholder="Thành phố">
+                    </div>
+                  </div>
+                  <div class="c-customer">
+                    <div class="c-title">
+                      Quốc gia
+                    </div>
+                    <div class="c-content">
+                      <select
+                        id="AddressCountry_{{ form.id }}"
+                        name="address[country]"
+                        data-address-country-select
+                        data-default="{{ form.country }}"
+                        data-form-id="{{ form.id }}"
+                        autocomplete="country">
+                        {{ all_country_option_tags }}
+                      </select>
+                    </div>
+                  </div>
+                  <div id="AddressProvinceContainer_{{ form.id }}" style="display:none;">
+                    <label for="AddressProvince_{{ form.id }}">
+                      Tỉnh
+                    </label>
+                    <div class="select">
+                      <select
+                        id="AddressProvince_{{ form.id }}"
+                        name="address[province]"
+                        data-default="{{ form.province }}"
+                        autocomplete="address-level1"></select>
+                    </div>
+                  </div>
+                  <div class="c-customer">
+                    <div class="c-title">
+                      Zipcode
+                    </div>
+                    <div class="c-content">
+                      <input
+                        type="text"
+                        id="AddressZip_{{ form.id }}"
+                        name="address[zip]"
+                        value="{{ form.zip }}"
+                        autocapitalize="characters"
+                        autocomplete="postal-code"
+                        placeholder="1234567">
+                    </div>
+                  </div>
+                  <div class="c-customer">
+                    <div class="c-title">
+                      Số điện thoại
+                    </div>
+                    <div class="c-content">
+                      <input
+                        type="tel"
+                        id="AddressPhone_{{ form.id }}"
+                        name="address[phone]"
+                        value="{{ form.phone }}"
+                        autocomplete="tel"
+                        placeholder="Số điện thoại">
+                    </div>
+                  </div>
+                  <div>
+                    {{ form.set_as_default_checkbox }}
+                    <label for="address_default_address_{{ form.id }}">
+                      Đặt làm địa chỉ mặc định
+                    </label>
+                  </div>
+                  <div>
+                    <button type="button" class="btnUpdate">Cập nhật</button>
+                    <button type="button" class="btnClose">Đóng</button>
+                  </div>
+                {%- endform -%}
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
